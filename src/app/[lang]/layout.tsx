@@ -4,6 +4,16 @@ import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { Inter, Space_Grotesk } from 'next/font/google'
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk'
+});
 
 export const metadata: Metadata = {
   title: 'Davidson Conceição | Portfolio',
@@ -19,12 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={params.lang ?? 'pt'} className="dark">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
-      </head>
-      <body className={cn('font-body antialiased flex flex-col min-h-screen')}>
+      <body className={cn('antialiased flex flex-col min-h-screen', inter.variable, spaceGrotesk.variable)}>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
