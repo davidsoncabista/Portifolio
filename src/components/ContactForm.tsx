@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { useFirestore, useAppCheck } from '@/firebase/provider';
+import { useFirestore } from '@/firebase/provider';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
 import {
@@ -36,7 +36,6 @@ interface ContactFormProps {
 
 export function ContactForm({ open, onOpenChange, lang }: ContactFormProps) {
   const firestore = useFirestore();
-  const appCheck = useAppCheck();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
