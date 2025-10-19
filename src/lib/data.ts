@@ -199,7 +199,7 @@ export const timeline = {
     {
       date: "2016",
       title: "B.S. in Computer Science",
-      company: "University of Technology",
+      company: "Universidade Federal Fluminense, Niterói",
       description: "Graduated with honors, focusing on distributed systems and artificial intelligence. Completed a final year project on peer-to-peer networking.",
     },
   ],
@@ -225,7 +225,7 @@ export const timeline = {
     {
       date: "2016",
       title: "Bacharel em Ciência da Computação",
-      company: "Universidade de Tecnologia",
+      company: "Universidade Federal Fluminense, Niterói",
       description: "Formado com honras, com foco em sistemas distribuídos e inteligência artificial. Concluí um projeto de final de ano sobre redes ponto a ponto.",
     },
   ]
