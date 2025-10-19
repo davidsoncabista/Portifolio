@@ -3,15 +3,21 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Briefcase } from 'lucide-react';
 
 export function TimelineSection({ lang }: { lang: string }) {
-  const timeline = timelineData[lang as keyof typeof timelineData];
+  const timeline = timelineData[lang as keyof typeof timelineData] || [];
+
+  const title = lang === 'pt' ? 'Minha Jornada Profissional' : 'My Professional Journey';
+  const description = lang === 'pt' 
+    ? 'Traçando meu caminho de um graduado em ciência da computação a um arquiteto de infraestrutura.'
+    : 'Tracing my path from a computer science graduate to an infrastructure architect.';
+
   return (
     <section id="journey" className="w-full py-12 md:py-24">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="space-y-2">
-            <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">My Professional Journey</h2>
+            <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">{title}</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Tracing my path from a computer science graduate to an infrastructure architect.
+              {description}
             </p>
           </div>
         </div>

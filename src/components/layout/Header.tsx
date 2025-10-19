@@ -21,11 +21,22 @@ const navLinks = [
 
 export function Header() {
   const pathname = usePathname();
-  const lang = pathname.split('/')[1];
+  const lang = pathname.split('/')[1] || 'pt';
   const currentLang = (lang === 'pt' || lang === 'en') ? lang : 'pt';
 
   const getLocalizedPath = (path: string) => {
+    if (path === '/') return `/${currentLang}`;
     return `/${currentLang}${path}`;
+  }
+  
+  const getPathForLang = (newLang: string) => {
+    const pathSegments = pathname.split('/').filter(Boolean);
+    if (pathSegments.length > 0 && (pathSegments[0] === 'en' || pathSegments[0] === 'pt')) {
+      pathSegments[0] = newLang;
+    } else {
+      pathSegments.unshift(newLang);
+    }
+    return '/' + pathSegments.join('/');
   }
 
   return (
@@ -95,10 +106,10 @@ export function Header() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem asChild>
-                   <Link href={`/pt${pathname.startsWith('/en') ? pathname.substring(3) : pathname}`}>Português</Link>
+                   <Link href={getPathForLang('pt')}>Português</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href={`/en${pathname.startsWith('/pt') ? pathname.substring(3) : pathname}`}>English</Link>
+                  <Link href={getPathForLang('en')}>English</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

@@ -4,9 +4,20 @@ import { Card } from "@/components/ui/card";
 import { PlayCircle } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function HeroSection() {
   const videoPlaceholder = PlaceHolderImages.find(p => p.id === 'video-intro-placeholder');
+  const pathname = usePathname();
+  const lang = pathname.split('/')[1] || 'pt';
+
+  const title = lang === 'pt' ? "Olá, eu sou Davidson" : "Hi, I'm Davidson";
+  const description = lang === 'pt' 
+    ? "Um Desenvolvedor Full-Stack e Arquiteto de Infraestrutura. Eu construo soluções robustas, escaláveis e eficientes que dão vida a ideias."
+    : "A Full-Stack Developer and Infrastructure Architect. I build robust, scalable, and efficient solutions that bring ideas to life.";
+  const viewWork = lang === 'pt' ? "Ver meu trabalho" : "View My Work";
+  const getInTouch = lang === 'pt' ? "Entrar em contato" : "Get in Touch";
+
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
@@ -15,21 +26,21 @@ export function HeroSection() {
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-4">
               <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-                Hi, I'm Davidson
+                {title}
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                A Full-Stack Developer and Infrastructure Architect. I build robust, scalable, and efficient solutions that bring ideas to life.
+                {description}
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                <Link href="/projects">
-                  View My Work
+                <Link href={`/${lang}/projects`}>
+                  {viewWork}
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <a href="mailto:contact@davidson.dev">
-                  Get in Touch
+                  {getInTouch}
                 </a>
               </Button>
             </div>

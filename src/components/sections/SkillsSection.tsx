@@ -4,15 +4,22 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 
 export function SkillsSection({ lang }: { lang: string }) {
-  const skills = skillsData[lang as keyof typeof skillsData];
+  const skills = skillsData[lang as keyof typeof skillsData] || [];
+
+  const title = lang === 'pt' ? 'Minhas Habilidades Técnicas' : 'My Technical Skills';
+  const description = lang === 'pt' 
+    ? 'Um resumo das tecnologias e ferramentas com as quais trabalho para construir aplicações web e infraestrutura modernas.'
+    : 'A snapshot of the technologies and tools I work with to build modern web applications and infrastructure.';
+
+
   return (
     <section id="skills" className="w-full py-12 md:py-24">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">My Technical Skills</h2>
+            <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">{title}</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              A snapshot of the technologies and tools I work with to build modern web applications and infrastructure.
+              {description}
             </p>
           </div>
         </div>
