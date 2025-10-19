@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { useFirestore } from '@/firebase/provider';
+import { useFirestore, useAppCheck } from '@/firebase/provider';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
 import {
@@ -36,6 +36,7 @@ interface ContactFormProps {
 
 export function ContactForm({ open, onOpenChange, lang }: ContactFormProps) {
   const firestore = useFirestore();
+  const appCheck = useAppCheck();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -49,7 +50,14 @@ export function ContactForm({ open, onOpenChange, lang }: ContactFormProps) {
   });
 
   const onSubmit = async (values: ContactFormValues) => {
-    if (!firestore) return;
+    if (!firestore || !appCheck) {
+        toast({
+            variant: 'destructive',
+            title: 'Error',
+            description: 'Firebase is not initialized correctly. Please try again later.'
+        });
+        return;
+    };
     setIsSubmitting(true);
     try {
       await addDoc(collection(firestore, 'messages'), {
