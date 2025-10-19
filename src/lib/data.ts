@@ -1,5 +1,5 @@
 
-import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram } from 'lucide-react';
+import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube } from 'lucide-react';
 
 export const projects = {
   en: [
@@ -237,6 +237,7 @@ export const socialLinks = [
     { name: 'GitHub', icon: Github, url: 'https://github.com/davidson-dev-br' },
     { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/davidsonsconceicao' },
     { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/davidson.dev.br' },
+    { name: 'Youtube', icon: Youtube, url: 'https://www.youtube.com/@davidson.developer' },
 ];
 
     
