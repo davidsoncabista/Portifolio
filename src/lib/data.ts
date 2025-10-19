@@ -4,11 +4,11 @@ export const projects = {
   en: [
     {
       title: "InfraCenter Manager",
-      description: "A comprehensive dashboard for managing and monitoring cloud infrastructure, providing real-time analytics and automated scaling solutions. Built to handle enterprise-level workloads on AWS.",
-      status: "Completed",
-      technologies: ["React", "Node.js", "Docker", "AWS", "Terraform"],
+      description: "A comprehensive management dashboard designed to centralize, track, and manage mission-critical data center infrastructure (O&M). The tool replaces decentralized manual control (spreadsheets, emails) with a single source of truth for all physical assets, including racks, servers, disks, and network components. Originally prototyped on a PaaS architecture (Firebase) for rapid validation, the project gained executive approval and is now being migrated to a high-availability private cloud, built and managed 100% in-house. The final infrastructure is a Proxmox virtualization cluster running on HP Gen9 servers (with over 1TB of RAM), connected to a dedicated SAN storage (HP MSA) and a 40GbE network (Cisco Nexus), ensuring enterprise-level performance and resilience for the O&M team.",
+      status: "Validated Prototype / On-Premise Migration",
+      technologies: ["React", "Node.js", "Proxmox", "Cisco Nexus", "Terraform"],
       demoUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/davidsoncabista/InfraCenter",
     },
     {
       title: "AI-Powered Code Assistant",
@@ -54,11 +54,11 @@ export const projects = {
   pt: [
     {
       title: "Gerenciador InfraCenter",
-      description: "Um painel abrangente para gerenciar e monitorar a infraestrutura em nuvem, fornecendo análises em tempo real e soluções de escalonamento automatizadas. Construído para lidar com cargas de trabalho de nível empresarial na AWS.",
-      status: "Concluído",
-      technologies: ["React", "Node.js", "Docker", "AWS", "Terraform"],
+      description: "Um painel de gerenciamento abrangente, projetado para centralizar, rastrear e gerenciar a infraestrutura de data center de missão crítica (O&M). A ferramenta substitui o controle manual descentralizado (planilhas, e-mails) por uma fonte única da verdade para todos os ativos físicos, incluindo racks, servidores, discos e componentes de rede. Originalmente prototipado em uma arquitetura PaaS (Firebase) para validação rápida, o projeto obteve aprovação da alta gestão e está em processo de migração para uma nuvem privada de alta disponibilidade, construída e gerenciada 100% internamente. A infraestrutura final é um cluster de virtualização Proxmox rodando em servidores HP Gen9 (com um total de 1TB+ de RAM), conectado a um storage SAN dedicado (HP MSA) e uma rede de 40GbE (Cisco Nexus), garantindo performance e resiliência de nível empresarial para a equipe de O&M.",
+      status: "Protótipo Validado / Migração On-Premise",
+      technologies: ["React", "Node.js", "Proxmox", "Cisco Nexus", "Terraform"],
       demoUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/davidsoncabista/InfraCenter",
     },
     {
       title: "Assistente de Código com IA",
@@ -180,9 +180,9 @@ export const timeline = {
   en: [
     {
       date: "2021 - Present",
-      title: "Lead Infrastructure Architect",
+      title: "Lead Infrastructure Solutions Architect",
       company: "TIM Brasil (Data Center O&M Industrial Buildings)",
-      description: "Data Center Management",
+      description: "Data Center Management.",
     },
     {
       date: "2019 - 2021",
