@@ -1,5 +1,6 @@
 
-import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube } from 'lucide-react';
+
+import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl } from 'lucide-react';
 
 export const projects = {
   en: [
@@ -129,6 +130,17 @@ export const skills = {
       ],
     },
     {
+        category: "Telecommunications",
+        icon: TowerControl,
+        list: [
+            { name: "Optical Networks (DWDM)", proficiency: 85 },
+            { name: "Routing & Switching (BGP, OSPF)", proficiency: 90 },
+            { name: "Network Security (Firewalls, VPNs)", proficiency: 80 },
+            { name: "Network Function Virtualization (NFV)", proficiency: 75 },
+            { name: "Network Monitoring", proficiency: 90 },
+        ],
+    },
+    {
       category: "AI & Machine Learning",
       icon: BrainCircuit,
       list: [
@@ -162,6 +174,17 @@ export const skills = {
         { name: "SQL & NoSQL", proficiency: 85 },
         { name: "GraphQL", proficiency: 75 },
       ],
+    },
+    {
+        category: "Telecomunicações",
+        icon: TowerControl,
+        list: [
+          { name: "Redes Ópticas (DWDM)", proficiency: 85 },
+          { name: "Roteamento e Switching (BGP, OSPF)", proficiency: 90 },
+          { name: "Segurança de Rede (Firewalls, VPNs)", proficiency: 80 },
+          { name: "Virtualização de Funções de Rede (NFV)", proficiency: 75 },
+          { name: "Monitoramento de Rede", proficiency: 90 },
+        ],
     },
     {
       category: "IA & Aprendizado de Máquina",
@@ -241,3 +264,4 @@ export const socialLinks = [
 ];
 
     
+
