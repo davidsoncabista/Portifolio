@@ -181,7 +181,7 @@ export const timeline = {
     {
       date: "2021 - Present",
       title: "Lead Infrastructure Architect",
-      company: "TIM Brasil",
+      company: "TIM Brasil (Data Center O&M Industrial Buildings)",
       description: "Data Center Management",
     },
     {
@@ -206,8 +206,8 @@ export const timeline = {
   pt: [
     {
       date: "2021 - Presente",
-      title: "Arquiteto de Infraestrutura Líder",
-      company: "TIM Brasil",
+      title: "Arquiteto de Soluções de Infraestrutura Líder",
+      company: "TIM Brasil (Data Center O&M Industrial Buildings)",
       description: "Gestão em Data Center.",
     },
     {

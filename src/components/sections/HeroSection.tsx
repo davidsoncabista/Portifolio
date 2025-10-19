@@ -13,10 +13,10 @@ export function HeroSection() {
   const pathname = usePathname();
   const lang = pathname.split('/')[1] || 'pt';
 
-  const title = lang === 'pt' ? "Olá, eu sou Davidson" : "Hi, I'm Davidson";
+  const title = lang === 'pt' ? "Olá, eu sou Davidson Conceição" : "Hi, I'm Davidson Conceição";
   const description = lang === 'pt' 
-    ? "Um Desenvolvedor Full-Stack e Arquiteto de Infraestrutura. Eu construo soluções robustas, escaláveis e eficientes que dão vida a ideias."
-    : "A Full-Stack Developer and Infrastructure Architect. I build robust, scalable, and efficient solutions that bring ideas to life.";
+    ? "Arquiteto de Soluções de Infraestrutura e Desenvolvedor Full-Stack. Eu construo soluções robustas, escaláveis e eficientes que dão vida a ideias."
+    : "An Infrastructure Solutions Architect and Full-Stack Developer. I build robust, scalable, and efficient solutions that bring ideas to life.";
   const viewWork = lang === 'pt' ? "Ver meu trabalho" : "View My Work";
   const getInTouch = lang === 'pt' ? "Entrar em contato" : "Get in Touch";
 
@@ -41,7 +41,7 @@ export function HeroSection() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <a href="mailto:contact@davidson.dev">
+                <a href="mailto:atendimento@davidson.dev.br">
                   {getInTouch}
                 </a>
               </Button>

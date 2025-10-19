@@ -7,8 +7,8 @@ export function TimelineSection({ lang }: { lang: string }) {
 
   const title = lang === 'pt' ? 'Minha Jornada Profissional' : 'My Professional Journey';
   const description = lang === 'pt' 
-    ? 'Traçando meu caminho de um graduado em ciência da computação a um arquiteto de infraestrutura.'
-    : 'Tracing my path from a computer science graduate to an infrastructure architect.';
+    ? 'Traçando meu caminho de um graduado em ciência da computação a um arquiteto de soluções de infraestrutura.'
+    : 'Tracing my path from a computer science graduate to an infrastructure solutions architect.';
 
   return (
     <section id="journey" className="w-full py-12 md:py-24">

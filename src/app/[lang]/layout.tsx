@@ -6,8 +6,8 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'Davidson.dev',
-  description: 'The personal portfolio of Davidson, a full-stack developer and infrastructure expert.',
+  title: 'Davidson Conceição | Portfolio',
+  description: 'The personal portfolio of Davidson Conceição, an Infrastructure Solutions Architect and Full-Stack Developer.',
 };
 
 export default function RootLayout({
