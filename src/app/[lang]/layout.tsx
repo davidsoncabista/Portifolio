@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Inter, Space_Grotesk } from 'next/font/google'
+import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -41,10 +42,12 @@ export default function RootLayout({
   return (
     <html lang={params.lang ?? 'pt'} className="dark">
       <body className={cn('antialiased flex flex-col min-h-screen font-body', inter.variable, spaceGrotesk.variable)}>
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <Toaster />
+        <FirebaseClientProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <Toaster />
+        </FirebaseClientProvider>
       </body>
     </html>
   );
