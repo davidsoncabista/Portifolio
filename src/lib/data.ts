@@ -1,3 +1,4 @@
+
 import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram } from 'lucide-react';
 
 export const projects = {
@@ -9,6 +10,14 @@ export const projects = {
       technologies: ["React", "Node.js", "Proxmox", "Cisco Nexus", "Terraform"],
       demoUrl: "#",
       githubUrl: "https://github.com/davidson-dev-br/InfraCenter",
+    },
+    {
+      title: "Association Management System (Dungeon App)",
+      description: "A complete full-stack web platform for managing room reservations, members, and activities for the Dungeon Belém Association. It includes detailed scheduling with multiple views, a robust administrative panel with dynamic access control (ACL), a voting system, internal communication (announcements and messages), and integration with a payment gateway. Designed for the gaming community, with a focus on usability and automation of administrative processes.",
+      status: "Active / Launched",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase"],
+      demoUrl: "#",
+      githubUrl: "#",
     },
     {
       title: "AI-Powered Code Assistant",
@@ -35,14 +44,6 @@ export const projects = {
       githubUrl: "#",
     },
     {
-      title: "Portfolio Website v2",
-      description: "This very website. A personal space to showcase my work and skills, built with a focus on clean design, performance, and modern web technologies.",
-      status: "Completed",
-      technologies: ["Next.js", "Tailwind CSS", "TypeScript"],
-      demoUrl: "#",
-      githubUrl: "#",
-    },
-    {
       title: "Real-time Chat Application",
       description: "A web-based chat application supporting multiple rooms and private messaging, built with WebSockets for instant communication and a resilient backend.",
       status: "Completed",
@@ -59,6 +60,14 @@ export const projects = {
       technologies: ["React", "Node.js", "Proxmox", "Cisco Nexus", "Terraform"],
       demoUrl: "#",
       githubUrl: "https://github.com/davidson-dev-br/InfraCenter",
+    },
+    {
+      title: "Sistema de Gestão para Associação (Dungeon App)",
+      description: "Uma plataforma web full-stack completa para gerenciamento de reservas de salas, membros e atividades da Associação Dungeon Belém. Inclui agendamento detalhado com múltiplas visualizações, painel administrativo robusto com controle de acesso dinâmico (ACL), sistema de votação, comunicação interna (avisos e mensagens) e integração com gateway de pagamento. Projetado para a comunidade de jogadores, com foco em usabilidade e automação de processos administrativos.",
+      status: "Ativo / Lançado",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase"],
+      demoUrl: "#",
+      githubUrl: "#",
     },
     {
       title: "Assistente de Código com IA",
@@ -92,14 +101,6 @@ export const projects = {
       demoUrl: "#",
       githubUrl: "#",
     },
-    {
-      title: "Aplicativo de Chat em Tempo Real",
-      description: "Um aplicativo de bate-papo baseado na web que oferece suporte a várias salas e mensagens privadas, construído com WebSockets para comunicação instantânea e um backend resiliente.",
-      status: "Concluído",
-      technologies: ["React", "Express.js", "Socket.IO", "MongoDB"],
-      demoUrl: "#",
-      githubUrl: "#",
-    }
   ]
 };
 
@@ -237,3 +238,5 @@ export const socialLinks = [
     { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/davidsonsconceicao' },
     { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/davidson.dev.br' },
 ];
+
+    
