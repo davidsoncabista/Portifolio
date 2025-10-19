@@ -6,101 +6,37 @@ export const projects = {
   en: [
     {
       title: "InfraCenter Manager",
-      description: "A comprehensive management dashboard designed to centralize, track, and manage mission-critical data center infrastructure (O&M). The tool replaces decentralized manual control (spreadsheets, emails) with a single source of truth for all physical assets, including racks, servers, disks, and network components. Originally prototyped on a PaaS architecture (Azure) for rapid validation, the project gained executive approval and is now being migrated to a high-availability private cloud, built and managed 100% in-house. The final infrastructure is a Proxmox virtualization cluster running on HP Gen9 servers (with over 1TB of RAM), connected to a dedicated SAN storage (HP MSA) and a 40GbE network (Cisco Nexus), ensuring enterprise-level performance and resilience for the O&M team.",
-      status: "Validated Prototype / On-Premise Migration",
-      technologies: ["React", "Node.js", "Proxmox", "Cisco Nexus", "Terraform"],
+      description: "A management dashboard for mission-critical data center infrastructure (O&M). It replaces spreadsheets with a Single Source of Truth for all physical assets (racks, servers, network). The project evolved from a PoC (PaaS/Azure) to an HA Proxmox virtualization cluster on HP Gen9 servers (1TB+ RAM), connected to SAN Storage (HP MSA) and a 40GbE network (Cisco Nexus). It demonstrates the ability to go from front-end development to enterprise-level infrastructure architecture and implementation.",
+      status: "Validated Prototype / In Production (Private Cloud)",
+      technologies: ["React/Node.js (App)", "Proxmox HA", "Cisco Nexus", "HP SAN", "Terraform"],
       demoUrl: "#",
       githubUrl: "https://github.com/davidson-dev-br/InfraCenter",
     },
     {
       title: "Association Management System (Dungeon App)",
-      description: "A complete full-stack web platform for managing room reservations, members, and activities for the Dungeon Belém Association. It includes detailed scheduling with multiple views, a robust administrative panel with dynamic access control (ACL), a voting system, internal communication (announcements and messages), and integration with a payment gateway. Designed for the gaming community, with a focus on usability and automation of administrative processes.",
+      description: "A full-stack web platform for managing room reservations, members, and dynamic access control (ACL) for the Association. A high-value solution that automates administrative processes and includes payment gateway integration.",
       status: "Active / Launched",
-      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase"],
+      technologies: ["Next.js", "TypeScript", "Firebase/Firestore", "Tailwind CSS", "Payment Integration"],
       demoUrl: "#",
       githubUrl: "https://github.com/davidson-dev-br/Dungeon-App/",
-    },
-    {
-      title: "AI-Powered Code Assistant",
-      description: "A smart code suggestion tool that integrates with VS Code. It uses machine learning models to provide context-aware code completions and bug detections, improving developer productivity.",
-      status: "In Progress",
-      technologies: ["Python", "TensorFlow", "Next.js", "WebSocket"],
-      demoUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "E-commerce Platform",
-      description: "A full-stack, scalable e-commerce solution with features like product management, user authentication, and a Stripe-integrated payment gateway. Designed for high performance and security.",
-      status: "Completed",
-      technologies: ["Next.js", "GraphQL", "PostgreSQL", "Stripe"],
-      demoUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Serverless Data Pipeline",
-      description: "An event-driven data processing pipeline using AWS Lambda and Kinesis. Efficiently processes and analyzes streaming data from multiple sources for business intelligence.",
-      status: "Archived",
-      technologies: ["AWS Lambda", "Python", "Kinesis", "S3"],
-      demoUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Real-time Chat Application",
-      description: "A web-based chat application supporting multiple rooms and private messaging, built with WebSockets for instant communication and a resilient backend.",
-      status: "Completed",
-      technologies: ["React", "Express.js", "Socket.IO", "MongoDB"],
-      demoUrl: "#",
-      githubUrl: "#",
     }
   ],
   pt: [
     {
       title: "Gerenciador InfraCenter",
-      description: "Um painel de gerenciamento abrangente, projetado para centralizar, rastrear e gerenciar a infraestrutura de data center de missão crítica (O&M). A ferramenta substitui o controle manual descentralizado (planilhas, e-mails) por uma fonte única da verdade para todos os ativos físicos, incluindo racks, servidores, discos e componentes de rede. Originalmente prototipado em uma arquitetura PaaS (Azure) para validação rápida, o projeto obteve aprovação da alta gestão e está em processo de migração para uma nuvem privada de alta disponibilidade, construída e gerenciada 100% internamente. A infraestrutura final é um cluster de virtualização Proxmox rodando em servidores HP Gen9 (com um total de 1TB+ de RAM), conectado a um storage SAN dedicado (HP MSA) e uma rede de 40GbE (Cisco Nexus), garantindo performance e resiliência de nível empresarial para a equipe de O&M.",
-      status: "Protótipo Validado / Migração On-Premise",
-      technologies: ["React", "Node.js", "Proxmox", "Cisco Nexus", "Terraform"],
+      description: "Um painel de gerenciamento para infraestrutura de data center de missão crítica (O&M). Substitui planilhas por uma Fonte Única da Verdade para todos os ativos físicos (racks, servidores, rede). O projeto evoluiu de um PoC (PaaS/Azure) para um cluster de virtualização Proxmox HA em servidores HP Gen9 (1TB+ RAM), conectado a Storage SAN (HP MSA) e rede 40GbE (Cisco Nexus). Demonstra a capacidade de ir do desenvolvimento front-end à arquitetura e implementação de infraestrutura de nível empresarial.",
+      status: "Protótipo Validado / Em Produção (Nuvem Privada)",
+      technologies: ["React/Node.js (App)", "Proxmox HA", "Cisco Nexus", "HP SAN", "Terraform"],
       demoUrl: "#",
       githubUrl: "https://github.com/davidson-dev-br/InfraCenter",
     },
     {
       title: "Sistema de Gestão para Associação (Dungeon App)",
-      description: "Uma plataforma web full-stack completa para gerenciamento de reservas de salas, membros e atividades da Associação Dungeon Belém. Inclui agendamento detalhado com múltiplas visualizações, painel administrativo robusto com controle de acesso dinâmico (ACL), sistema de votação, comunicação interna (avisos e mensagens) e integração com gateway de pagamento. Projetado para a comunidade de jogadores, com foco em usabilidade e automação de processos administrativos.",
+      description: "Plataforma web full-stack para gestão de reservas de salas, membros e controle de acesso dinâmico (ACL) da Associação. Solução de alto valor que automação de processos administrativos e inclui integração com gateway de pagamento.",
       status: "Ativo / Lançado",
-      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase"],
+      technologies: ["Next.js", "TypeScript", "Firebase/Firestore", "Tailwind CSS", "Integração de Pagamentos"],
       demoUrl: "#",
       githubUrl: "https://github.com/davidson-dev-br/Dungeon-App/",
-    },
-    {
-      title: "Assistente de Código com IA",
-      description: "Uma ferramenta inteligente de sugestão de código que se integra ao VS Code. Ele usa modelos de aprendizado de máquina para fornecer conclusões de código com reconhecimento de contexto e detecção de bugs, melhorando a produtividade do desenvolvedor.",
-      status: "Em Progresso",
-      technologies: ["Python", "TensorFlow", "Next.js", "WebSocket"],
-      demoUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Plataforma de E-commerce",
-      description: "Uma solução de e-commerce escalável e full-stack com recursos como gerenciamento de produtos, autenticação de usuário e um gateway de pagamento integrado ao Stripe. Projetado para alto desempenho e segurança.",
-      status: "Concluído",
-      technologies: ["Next.js", "GraphQL", "PostgreSQL", "Stripe"],
-      demoUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Pipeline de Dados Sem Servidor",
-      description: "Um pipeline de processamento de dados orientado a eventos usando AWS Lambda e Kinesis. Processa e analisa com eficiência dados de streaming de várias fontes para inteligência de negócios.",
-      status: "Arquivado",
-      technologies: ["AWS Lambda", "Python", "Kinesis", "S3"],
-      demoUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Site de Portfólio v2",
-      description: "Este mesmo site. Um espaço pessoal para mostrar meu trabalho e minhas habilidades, construído com foco em design limpo, desempenho e tecnologias web modernas.",
-      status: "Concluído",
-      technologies: ["Next.js", "Tailwind CSS", "TypeScript"],
-      demoUrl: "#",
-      githubUrl: "#",
     },
   ]
 };
@@ -108,100 +44,92 @@ export const projects = {
 export const skills = {
   en: [
     {
-      category: "Infrastructure",
-      icon: ServerCog,
-      list: [
-        { name: "AWS", proficiency: 95 },
-        { name: "Docker", proficiency: 90 },
-        { name: "Kubernetes", proficiency: 80 },
-        { name: "Terraform", proficiency: 85 },
-        { name: "CI/CD", proficiency: 90 },
-      ],
-    },
-    {
-      category: "Full-Stack Development",
-      icon: Code2,
-      list: [
-        { name: "React / Next.js", proficiency: 95 },
-        { name: "Node.js / Express", proficiency: 90 },
-        { name: "Python / Django", proficiency: 80 },
-        { name: "SQL & NoSQL", proficiency: 85 },
-        { name: "GraphQL", proficiency: 75 },
-        { name: "PHP", proficiency: 90 },
-        { name: "HTML", proficiency: 90 },
-        { name: "CSS", proficiency: 90 },
-      ],
-    },
-    {
-        category: "Telecommunications",
-        icon: TowerControl,
+        category: "Critical Infrastructure & DevOps",
+        icon: ServerCog,
         list: [
-            { name: "Optical Networks (DWDM)", proficiency: 85 },
-            { name: "Routing & Switching (BGP, OSPF)", proficiency: 90 },
-            { name: "Network Security (Firewalls, VPNs)", proficiency: 80 },
-            { name: "Network Function Virtualization (NFV)", proficiency: 75 },
-            { name: "Network Monitoring", proficiency: 90 },
+            { name: "HA Virtualization (Proxmox)", proficiency: 95 },
+            { name: "SAN/ZFS Storage (HP MSA)", proficiency: 90 },
+            { name: "Routing/Switching (Cisco Nexus)", proficiency: 85 },
+            { name: "Orchestration (Docker / Kubernetes)", proficiency: 80 },
+            { name: "IaC (Terraform) & CI/CD", proficiency: 85 },
+            { name: "Cloud Providers (AWS)", proficiency: 80 },
         ],
     },
     {
-      category: "AI & Machine Learning",
-      icon: BrainCircuit,
-      list: [
-        { name: "TensorFlow / PyTorch", proficiency: 75 },
-        { name: "Scikit-learn", proficiency: 85 },
-        { name: "Natural Language Proc.", proficiency: 70 },
-        { name: "Data Pipelines", proficiency: 80 },
-        { name: "GenAI APIs", proficiency: 85 },
-      ],
+        category: "Full-Stack Development",
+        icon: Code2,
+        list: [
+            { name: "React / Next.js (Frontend)", proficiency: 95 },
+            { name: "Node.js / Express (Backend APIs)", proficiency: 90 },
+            { name: "TypeScript", proficiency: 85 },
+            { name: "SQL (MS SQL Server / MySQL)", proficiency: 85 },
+            { name: "Python (Automation)", proficiency: 80 },
+        ],
+    },
+    {
+        category: "Telecommunications & Networks",
+        icon: TowerControl,
+        list: [
+            { name: "Routing & Switching (BGP, OSPF)", proficiency: 90 },
+            { name: "Optical Networks (DWDM)", proficiency: 85 },
+            { name: "Network Monitoring", proficiency: 90 },
+            { name: "Network Security (Firewalls)", proficiency: 80 },
+        ],
+    },
+    {
+        category: "Innovation & AI (Architecture)",
+        icon: BrainCircuit,
+        list: [
+            { name: "On-Premise LLM Architecture (Ollama)", proficiency: 85 },
+            { name: "Data Science (Python / Scikit-learn)", proficiency: 75 },
+            { name: "Data Pipelines / ETL", proficiency: 80 },
+            { name: "GenAI APIs (Integration)", proficiency: 85 },
+        ],
     },
   ],
   pt: [
     {
-      category: "Infraestrutura",
-      icon: ServerCog,
-      list: [
-        { name: "AWS", proficiency: 95 },
-        { name: "Docker", proficiency: 90 },
-        { name: "Kubernetes", proficiency: 80 },
-        { name: "Terraform", proficiency: 85 },
-        { name: "CI/CD", proficiency: 90 },
-      ],
-    },
-    {
-      category: "Desenvolvimento Full-Stack",
-      icon: Code2,
-      list: [
-        { name: "React / Next.js", proficiency: 95 },
-        { name: "Node.js / Express", proficiency: 90 },
-        { name: "Python / Django", proficiency: 80 },
-        { name: "SQL & NoSQL", proficiency: 85 },
-        { name: "GraphQL", proficiency: 75 },
-        { name: "PHP", proficiency: 90 },
-        { name: "HTML", proficiency: 90 },
-        { name: "CSS", proficiency: 90 },
-      ],
-    },
-    {
-        category: "Telecomunicações",
-        icon: TowerControl,
+        category: "Infraestrutura Crítica & DevOps",
+        icon: ServerCog,
         list: [
-          { name: "Redes Ópticas (DWDM)", proficiency: 85 },
-          { name: "Roteamento e Switching (BGP, OSPF)", proficiency: 90 },
-          { name: "Segurança de Rede (Firewalls, VPNs)", proficiency: 80 },
-          { name: "Virtualização de Funções de Rede (NFV)", proficiency: 75 },
-          { name: "Monitoramento de Rede", proficiency: 90 },
+            { name: "Virtualização HA (Proxmox)", proficiency: 95 },
+            { name: "Storage SAN/ZFS (HP MSA)", proficiency: 90 },
+            { name: "Roteamento/Switching (Cisco Nexus)", proficiency: 85 },
+            { name: "Orquestração (Docker / Kubernetes)", proficiency: 80 },
+            { name: "IaC (Terraform) & CI/CD", proficiency: 85 },
+            { name: "Cloud Providers (AWS)", proficiency: 80 },
         ],
     },
     {
-      category: "IA & Aprendizado de Máquina",
-      icon: BrainCircuit,
-      list: [
-        { name: "TensorFlow / PyTorch", proficiency: 75 },
-        { name: "Scikit-learn", proficiency: 85 },
-        { name: "Processamento de Linguagem Natural", proficiency: 70 },
-        { name: "Pipelines de Dados", proficiency: 80 },
-        { name: "APIs de GenAI", proficiency: 85 },
-      ],
+        category: "Desenvolvimento Full-Stack",
+        icon: Code2,
+        list: [
+            { name: "React / Next.js (Frontend)", proficiency: 95 },
+            { name: "Node.js / Express (Backend APIs)", proficiency: 90 },
+            { name: "TypeScript", proficiency: 85 },
+            { name: "SQL (MS SQL Server / MySQL)", proficiency: 85 },
+            { name: "Python (Automação)", proficiency: 80 },
+        ],
+    },
+    {
+        category: "Telecomunicações & Redes",
+        icon: TowerControl,
+        list: [
+            { name: "Roteamento e Switching (BGP, OSPF)", proficiency: 90 },
+            { name: "Redes Ópticas (DWDM)", proficiency: 85 },
+            { name: "Monitoramento de Rede", proficiency: 90 },
+            { name: "Segurança de Rede (Firewalls)", proficiency: 80 },
+        ],
+    },
+    {
+        category: "Inovação & IA (Arquitetura)",
+        icon: BrainCircuit,
+        list: [
+            { name: "Arquitetura LLM On-Premise (Ollama)", proficiency: 85 },
+            { name: "Data Science (Python / Scikit-learn)", proficiency: 75 },
+            { name: "Pipelines de Dados / ETL", proficiency: 80 },
+            { name: "APIs de GenAI (Integração)", proficiency: 85 },
+        ],
     },
   ]
 };
@@ -211,8 +139,8 @@ export const timeline = {
     {
       date: "2021 - Present",
       title: "Lead Infrastructure Solutions Architect",
-      company: "TIM Brasil (Data Center O&M Industrial Buildings)",
-      description: "Data Center Management.",
+      company: "TIM Brasil (Data Center O&M)",
+      description: "Leading the architecture and implementation of a high-availability private cloud for mission-critical O&M systems, migrating from a PaaS prototype to an on-premise Proxmox cluster.",
     },
     {
       date: "2019 - 2021",
@@ -237,8 +165,8 @@ export const timeline = {
     {
       date: "2021 - Presente",
       title: "Arquiteto de Soluções de Infraestrutura Líder",
-      company: "TIM Brasil (Data Center O&M Industrial Buildings)",
-      description: "Gestão em Data Center.",
+      company: "TIM Brasil (Data Center O&M)",
+      description: "Liderando a arquitetura e implementação de uma nuvem privada de alta disponibilidade para sistemas críticos de O&M, migrando de um protótipo PaaS para um cluster Proxmox on-premise.",
     },
     {
       date: "2019 - 2021",
@@ -272,3 +200,6 @@ export const socialLinks = [
     
 
 
+
+
+    
