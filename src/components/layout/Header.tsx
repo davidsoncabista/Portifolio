@@ -12,18 +12,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { socialLinks as socialLinksData } from '@/lib/data';
 
 const navLinks = [
   { href: '/', label: 'Home', ptLabel: 'Início' },
   { href: '/projects', label: 'Projects', ptLabel: 'Projetos' },
 ];
-
-const socialLinks = [
-    { name: 'GitHub', icon: Github, url: 'https://github.com/davidson-dev-br' },
-    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/davidsonsconceicao' },
-    { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/davidson.dev.br' },
-];
-
 
 export function Header() {
   const pathname = usePathname();
@@ -123,7 +117,7 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {socialLinks.map((link) => (
+            {socialLinksData.map((link) => (
               <Button key={link.name} variant="ghost" size="icon" asChild>
                 <a href={link.url} target="_blank" rel="noreferrer" aria-label={link.name}>
                   <link.icon className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
