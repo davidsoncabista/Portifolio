@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Mountain, Globe, Github, Linkedin, Instagram } from 'lucide-react';
+import { Menu, Globe, Github, Linkedin, Instagram } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import {
@@ -12,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { socialLinks as socialLinksData } from '@/lib/data';
+import { socialLinks } from '@/lib/data';
 
 const navLinks = [
   { href: '/', label: 'Home', ptLabel: 'Início' },
@@ -44,7 +45,7 @@ export function Header() {
       <div className="container flex h-14 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href={getLocalizedPath('/')} className="mr-6 flex items-center space-x-2">
-            <Mountain className="h-6 w-6 text-primary" />
+            <Image src="/logo trans davidson.dev.png" alt="Davidson.dev Logo" width={24} height={24} className="h-6 w-6 text-primary" />
             <span className="hidden font-bold sm:inline-block font-headline">Davidson.dev</span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
@@ -75,7 +76,7 @@ export function Header() {
                <SheetTitle className="sr-only">Menu</SheetTitle>
             </SheetHeader>
             <Link href={getLocalizedPath('/')} className="mr-6 flex items-center space-x-2">
-              <Mountain className="h-6 w-6 text-primary" />
+              <Image src="/logo trans davidson.dev.png" alt="Davidson.dev Logo" width={24} height={24} className="h-6 w-6 text-primary" />
               <span className="font-bold font-headline">Davidson.dev</span>
             </Link>
             <div className="grid gap-2 py-6">
@@ -117,7 +118,7 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {socialLinksData.map((link) => (
+            {socialLinks.map((link) => (
               <Button key={link.name} variant="ghost" size="icon" asChild>
                 <a href={link.url} target="_blank" rel="noreferrer" aria-label={link.name}>
                   <link.icon className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
