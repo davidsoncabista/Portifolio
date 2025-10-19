@@ -127,6 +127,9 @@ export const skills = {
         { name: "Python / Django", proficiency: 80 },
         { name: "SQL & NoSQL", proficiency: 85 },
         { name: "GraphQL", proficiency: 75 },
+        { name: "PHP", proficiency: 90 },
+        { name: "HTML", proficiency: 90 },
+        { name: "CSS", proficiency: 90 },
       ],
     },
     {
@@ -173,6 +176,9 @@ export const skills = {
         { name: "Python / Django", proficiency: 80 },
         { name: "SQL & NoSQL", proficiency: 85 },
         { name: "GraphQL", proficiency: 75 },
+        { name: "PHP", proficiency: 90 },
+        { name: "HTML", proficiency: 90 },
+        { name: "CSS", proficiency: 90 },
       ],
     },
     {
@@ -264,4 +270,5 @@ export const socialLinks = [
 ];
 
     
+
 
