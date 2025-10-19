@@ -1,13 +1,15 @@
 import { Metadata } from 'next';
 import { ProjectCard } from "@/components/ProjectCard";
-import { projects } from "@/lib/data";
+import { projects as projectsData } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: 'Projects | Davidson.dev',
   description: "A gallery of projects by Davidson.",
 };
 
-export default function ProjectsPage() {
+export default function ProjectsPage({ params }: { params: { lang: string } }) {
+    const lang = params.lang || 'pt';
+    const projects = projectsData[lang as keyof typeof projectsData];
     return (
         <section className="py-16 sm:py-24">
             <div className="container mx-auto px-4">

@@ -1,9 +1,10 @@
-import { skills } from '@/lib/data';
+import { skills as skillsData } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 
-export function SkillsSection() {
+export function SkillsSection({ lang }: { lang: string }) {
+  const skills = skillsData[lang as keyof typeof skillsData];
   return (
     <section id="skills" className="w-full py-12 md:py-24">
       <div className="container px-4 md:px-6">

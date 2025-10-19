@@ -1,8 +1,9 @@
-import { timeline } from '@/lib/data';
+import { timeline as timelineData } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Briefcase } from 'lucide-react';
 
-export function TimelineSection() {
+export function TimelineSection({ lang }: { lang: string }) {
+  const timeline = timelineData[lang as keyof typeof timelineData];
   return (
     <section id="journey" className="w-full py-12 md:py-24">
       <div className="container px-4 md:px-6">

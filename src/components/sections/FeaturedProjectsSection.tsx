@@ -1,10 +1,11 @@
-import { projects } from '@/lib/data';
+import { projects as projectsData } from '@/lib/data';
 import { ProjectCard } from '@/components/ProjectCard';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-export function FeaturedProjectsSection() {
+export function FeaturedProjectsSection({ lang }: { lang: string }) {
+  const projects = projectsData[lang as keyof typeof projectsData];
   const featuredProjects = projects.slice(0, 3);
 
   return (
