@@ -17,7 +17,7 @@ export const projects = {
       status: "Active / Launched",
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase"],
       demoUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/davidson-dev-br/Dungeon-App/",
     },
     {
       title: "AI-Powered Code Assistant",
@@ -67,7 +67,7 @@ export const projects = {
       status: "Ativo / Lançado",
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase"],
       demoUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/davidson-dev-br/Dungeon-App/",
     },
     {
       title: "Assistente de Código com IA",
