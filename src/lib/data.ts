@@ -181,8 +181,8 @@ export const timeline = {
     {
       date: "2021 - Present",
       title: "Lead Infrastructure Architect",
-      company: "Innovatech Solutions",
-      description: "Architected and led the development of 'InfraCenter Manager', reducing cloud costs by 30%. Managed a team of 5 engineers and spearheaded the migration to a microservices architecture.",
+      company: "TIM Brasil",
+      description: "Data Center Management",
     },
     {
       date: "2019 - 2021",
@@ -207,8 +207,8 @@ export const timeline = {
     {
       date: "2021 - Presente",
       title: "Arquiteto de Infraestrutura Líder",
-      company: "Innovatech Solutions",
-      description: "Arquitetei e liderei o desenvolvimento do 'Gerenciador InfraCenter', reduzindo os custos de nuvem em 30%. Gerenciei uma equipe de 5 engenheiros e liderei a migração para uma arquitetura de microsserviços.",
+      company: "TIM Brasil",
+      description: "Gestão em Data Center.",
     },
     {
       date: "2019 - 2021",
