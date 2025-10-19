@@ -234,6 +234,6 @@ export const timeline = {
 
 export const socialLinks = [
     { name: 'GitHub', icon: Github, url: 'https://github.com' },
-    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com' },
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/davidsonsconceicao' },
     { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/davidson.dev.br' },
 ];
