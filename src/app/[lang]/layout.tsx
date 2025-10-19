@@ -18,6 +18,17 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'Davidson Conceição | Portfolio',
   description: 'The personal portfolio of Davidson Conceição, an Infrastructure Solutions Architect and Full-Stack Developer.',
+  keywords: ['Davidson Conceição', 'Full-Stack Developer', 'Infrastructure Architect', 'DevOps', 'React', 'Next.js', 'AWS', 'TIM Brasil', 'Portfolio'],
+  authors: [{ name: 'Davidson Conceição', url: 'https://davidson.dev.br' }],
+  creator: 'Davidson Conceição',
+  openGraph: {
+    title: 'Davidson Conceição | Portfolio',
+    description: 'The personal portfolio of Davidson Conceição, an Infrastructure Solutions Architect and Full-Stack Developer.',
+    url: 'https://davidson.dev.br',
+    siteName: 'Davidson.dev',
+    locale: 'pt_BR',
+    type: 'website',
+  }
 };
 
 export default function RootLayout({
@@ -29,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={params.lang ?? 'pt'} className="dark">
-      <body className={cn('antialiased flex flex-col min-h-screen', inter.variable, spaceGrotesk.variable)}>
+      <body className={cn('antialiased flex flex-col min-h-screen font-body', inter.variable, spaceGrotesk.variable)}>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
