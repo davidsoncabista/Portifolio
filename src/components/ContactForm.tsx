@@ -50,7 +50,7 @@ export function ContactForm({ open, onOpenChange, lang }: ContactFormProps) {
   });
 
   const onSubmit = async (values: ContactFormValues) => {
-    if (!firestore || !appCheck) {
+    if (!firestore) {
         toast({
             variant: 'destructive',
             title: 'Error',
