@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Mountain, Globe } from 'lucide-react';
-import { socialLinks } from '@/lib/data';
+import { Menu, Mountain, Globe, Github, Linkedin, Instagram } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import {
@@ -18,6 +17,13 @@ const navLinks = [
   { href: '/', label: 'Home', ptLabel: 'Início' },
   { href: '/projects', label: 'Projects', ptLabel: 'Projetos' },
 ];
+
+const socialLinks = [
+    { name: 'GitHub', icon: Github, url: 'https://github.com/davidson-dev-br' },
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/davidsonsconceicao' },
+    { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/davidson.dev.br' },
+];
+
 
 export function Header() {
   const pathname = usePathname();
