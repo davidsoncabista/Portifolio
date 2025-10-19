@@ -1,21 +1,37 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { initializeFirebase } from './index';
 import { FirebaseProvider } from './provider';
+import type { FirebaseApp } from 'firebase/app';
+import type { Auth } from 'firebase/auth';
+import type { Firestore } from 'firebase/firestore';
 import type { AppCheck } from 'firebase/app-check';
 
-let firebaseApp: any, auth: any, firestore: any, appCheck: AppCheck | undefined;
-// This check ensures firebase is only initialized on the client
-if (typeof window !== 'undefined') {
-  ({ firebaseApp, auth, firestore, appCheck } = initializeFirebase());
+interface FirebaseInstances {
+  firebaseApp: FirebaseApp;
+  auth: Auth;
+  firestore: Firestore;
+  appCheck: AppCheck | undefined;
 }
 
 export function FirebaseClientProvider({ children }: { children: ReactNode }) {
-  // Prevent re-initialization on re-renders
-  if (!firebaseApp && typeof window !== 'undefined') {
-    ({ firebaseApp, auth, firestore, appCheck } = initializeFirebase());
+  const [instances, setInstances] = useState<FirebaseInstances | null>(null);
+
+  useEffect(() => {
+    // This check ensures firebase is only initialized on the client
+    if (typeof window !== 'undefined') {
+      const { firebaseApp, auth, firestore, appCheck } = initializeFirebase();
+      setInstances({ firebaseApp, auth, firestore, appCheck });
+    }
+  }, []);
+
+  if (!instances) {
+    // You can render a loading spinner or null here
+    return null;
   }
+  
+  const { firebaseApp, auth, firestore, appCheck } = instances;
 
   return (
     <FirebaseProvider firebaseApp={firebaseApp} auth={auth} firestore={firestore} appCheck={appCheck}>

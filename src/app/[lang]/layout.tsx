@@ -35,10 +35,10 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
   params,
-}: Readonly<{
+}: {
   children: React.ReactNode;
   params: { lang: string };
-}>) {
+}) {
   return (
     <html lang={params.lang ?? 'pt'} className="dark">
       <body className={cn('antialiased flex flex-col min-h-screen font-body', inter.variable, spaceGrotesk.variable)}>
