@@ -54,7 +54,6 @@ export const skills = {
             { name: "IaC (Terraform) & CI/CD", proficiency: 85 },
             { name: "Cloud Providers (AWS)", proficiency: 80 },
             { name: "Nginx", proficiency: 90 },
-            { name: "Ngrok", proficiency: 85 },
         ],
     },
     {
@@ -101,7 +100,6 @@ export const skills = {
             { name: "IaC (Terraform) & CI/CD", proficiency: 85 },
             { name: "Cloud Providers (AWS)", proficiency: 80 },
             { name: "Nginx", proficiency: 90 },
-            { name: "Ngrok", proficiency: 85 },
         ],
     },
     {
