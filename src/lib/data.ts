@@ -69,7 +69,7 @@ export const skills = {
         category: "Telecommunications & Networks",
         icon: TowerControl,
         list: [
-            { name: "Routing & Switching (BGP, OSPF)", proficiency: 90, logo: "https://cdn.simpleicons.org/cisco/1BA0D7" },
+            { name: "Routing & Switching (BGP, OSPF)", proficiency: 90, logo: "https://img.icons8.com/ios/50/cisco-router.png" },
             { name: "Optical Networks (DWDM)", proficiency: 85, logo: "https://img.icons8.com/ios/50/fiber-optic.png" },
             { name: "Network Monitoring", proficiency: 90, logo: "https://img.icons8.com/ios/50/network.png" },
             { name: "Network Security (Firewalls)", proficiency: 80, logo: "https://img.icons8.com/ios/50/firewall.png" },
@@ -115,7 +115,7 @@ export const skills = {
         category: "Telecomunicações & Redes",
         icon: TowerControl,
         list: [
-            { name: "Roteamento e Switching (BGP, OSPF)", proficiency: 90, logo: "https://cdn.simpleicons.org/cisco/1BA0D7" },
+            { name: "Roteamento e Switching (BGP, OSPF)", proficiency: 90, logo: "https://img.icons8.com/ios/50/cisco-router.png" },
             { name: "Redes Ópticas (DWDM)", proficiency: 85, logo: "https://img.icons8.com/ios/50/fiber-optic.png" },
             { name: "Monitoramento de Rede", proficiency: 90, logo: "https://img.icons8.com/ios/50/network.png" },
             { name: "Segurança de Rede (Firewalls)", proficiency: 80, logo: "https://img.icons8.com/ios/50/firewall.png" },
