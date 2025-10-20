@@ -1,4 +1,4 @@
-import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl, GraduationCap, Briefcase } from 'lucide-react';
+import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl } from 'lucide-react';
 
 export const projects = {
   en: [
@@ -142,6 +142,12 @@ export const articles = {
       url: "https://www.linkedin.com/pulse/do-c%25C3%25B3digo-ao-cabo-a-evolu%25C3%25A7%25C3%25A3o-de-um-arquiteto-full-stack-conceicao-7j9pf/",
       publicationDate: "2024-07-20",
     },
+    {
+      title: "My First Bug: How a R$50 Workaround Taught Me About Problem-Solving",
+      description: "A story about a creative solution from early in my career and the lesson it taught me about thinking outside the box to solve complex problems.",
+      url: "https://www.linkedin.com/pulse/meu-primeiro-bug-como-uma-gambiarra-de-r50-me-ensinou-s-concei%25C3%25A7%25C3%25A3o-3ewaf/",
+      publicationDate: "2024-07-15",
+    }
   ],
   pt: [
     {
@@ -149,6 +155,12 @@ export const articles = {
       description: "Um artigo sobre a jornada para unir o desenvolvimento de software moderno à infraestrutura de hardware crítica, e por que essa união é essencial para o futuro da tecnologia.",
       url: "https://www.linkedin.com/pulse/do-c%25C3%25B3digo-ao-cabo-a-evolu%25C3%25A7%25C3%25A3o-de-um-arquiteto-full-stack-conceicao-7j9pf/",
       publicationDate: "2024-07-20",
+    },
+    {
+      title: "Meu Primeiro Bug: Como uma 'Gambiarra' de R$50 me Ensinou Sobre Resolução de Problemas",
+      description: "Uma história sobre uma solução criativa do início da minha carreira e a lição que ela me ensinou sobre pensar fora da caixa para resolver problemas complexos.",
+      url: "https://www.linkedin.com/pulse/meu-primeiro-bug-como-uma-gambiarra-de-r50-me-ensinou-s-concei%25C3%25A7%25C3%25A3o-3ewaf/",
+      publicationDate: "2024-07-15",
     }
   ]
 }
