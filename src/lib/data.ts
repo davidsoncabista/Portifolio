@@ -3,11 +3,11 @@ import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, T
 export const projects = {
   en: [
     {
-      title: "InfraCenter Manager",
+      title: "InfraVision",
       description: "A management dashboard for mission-critical data center infrastructure (O&M). It replaces spreadsheets with a Single Source of Truth for all physical assets (racks, servers, network). The project evolved from a PoC (PaaS/Azure) to an HA Proxmox virtualization cluster on HP Gen9 servers (1TB+ RAM), connected to SAN Storage (HP MSA) and a 40GbE network (Cisco Nexus). It demonstrates the ability to go from front-end development to enterprise-level infrastructure architecture and implementation.",
       status: "Validated Prototype / In Production (Private Cloud)",
       technologies: ["React/Node.js (App)", "Proxmox HA", "Cisco Nexus", "HP SAN", "Terraform"],
-      demoUrl: "#",
+      demoUrl: "https://studio--infravision2.us-central1.hosted.app/login1",
       githubUrl: "https://github.com/davidsoncabista/Portifolio",
     },
     {
@@ -21,11 +21,11 @@ export const projects = {
   ],
   pt: [
     {
-      title: "Gerenciador InfraCenter",
+      title: "InfraVision",
       description: "Um painel de gerenciamento para infraestrutura de data center de missão crítica (O&M). Substitui planilhas por uma Fonte Única da Verdade para todos os ativos físicos (racks, servidores, rede). O projeto evoluiu de um PoC (PaaS/Azure) para um cluster de virtualização Proxmox HA em servidores HP Gen9 (1TB+ RAM), conectado a Storage SAN (HP MSA) e rede 40GbE (Cisco Nexus). Demonstra a capacidade de ir do desenvolvimento front-end à arquitetura e implementação de infraestrutura de nível empresarial.",
       status: "Protótipo Validado / Em Produção (Nuvem Privada)",
       technologies: ["React/Node.js (App)", "Proxmox HA", "Cisco Nexus", "HP SAN", "Terraform"],
-      demoUrl: "#",
+      demoUrl: "https://studio--infravision2.us-central1.hosted.app/login1",
       githubUrl: "https://github.com/davidsoncabista/Portifolio",
     },
     {
@@ -196,3 +196,5 @@ export const socialLinks = [
     { name: "Instagram", icon: Instagram, url: "https://instagram.com/davidson.dev.br" },
     { name: 'Youtube', icon: Youtube, url: 'https://www.youtube.com/@davidson.developer' },
 ];
+
+    
