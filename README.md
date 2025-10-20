@@ -25,8 +25,8 @@ To run the project locally, follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/davidson-dev-br/davidson.dev.br.git
-    cd davidson.dev.br
+    git clone https://github.com/davidsoncabista/Portifolio.git
+    cd Portifolio
     ```
 
 2.  **Install dependencies:**
