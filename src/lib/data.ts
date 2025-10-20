@@ -15,7 +15,7 @@ export const projects = {
       description: "A full-stack web platform for managing room reservations, members, and dynamic access control (ACL) for the Association. A high-value solution that automates administrative processes and includes payment gateway integration.",
       status: "Active / Launched",
       technologies: ["Next.js", "TypeScript", "Firebase/Firestore", "Tailwind CSS", "Payment Integration"],
-      demoUrl: "#",
+      demoUrl: "https://studio--adbelm.us-central1.hosted.app/landing",
       githubUrl: "https://github.com/davidsoncabista/Portifolio",
     }
   ],
@@ -33,7 +33,7 @@ export const projects = {
       description: "Plataforma web full-stack para gestão de reservas de salas, membros e controle de acesso dinâmico (ACL) da Associação. Solução de alto valor que automação de processos administrativos e inclui integração com gateway de pagamento.",
       status: "Ativo / Lançado",
       technologies: ["Next.js", "TypeScript", "Firebase/Firestore", "Tailwind CSS", "Integração de Pagamentos"],
-      demoUrl: "#",
+      demoUrl: "https://studio--adbelm.us-central1.hosted.app/landing",
       githubUrl: "https://github.com/davidsoncabista/Portifolio",
     },
   ]
