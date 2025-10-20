@@ -1,4 +1,4 @@
-import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl, GraduationCap, Briefcase } from 'lucide-react';
+import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl } from 'lucide-react';
 
 export const projects = {
   en: [
@@ -137,6 +137,12 @@ export const skills = {
 export const articles = {
   en: [
     {
+      title: "Stable Infrastructure: The Secret Foundation of Agile AI",
+      description: "An analysis of how a robust and well-planned IT infrastructure is crucial for the success and agility of Artificial Intelligence projects.",
+      url: "https://www.linkedin.com/pulse/infraestrutura-est%25C3%25A1vel-o-alicerce-secreto-da-%25C3%25A1gil-e-s-concei%25C3%25A7%25C3%25A3o-libdf",
+      publicationDate: "2024-07-25",
+    },
+    {
       title: "From Code to Cable: A Journey of Rediscovery",
       description: "An article about the journey of bridging the gap between modern software development and critical hardware infrastructure, and why this union is essential for the future of technology.",
       url: "https://www.linkedin.com/pulse/do-c%25C3%25B3digo-ao-cabo-uma-jornada-de-redescoberta-da-davidson-s-concei%25C3%25A7%25C3%25A3o-yo1mf/",
@@ -150,6 +156,12 @@ export const articles = {
     }
   ],
   pt: [
+    {
+      title: "Infraestrutura Estável: O Alicerce Secreto da IA Ágil",
+      description: "Uma análise sobre como uma infraestrutura de TI robusta e bem planejada é crucial para o sucesso e a agilidade de projetos de Inteligência Artificial.",
+      url: "https://www.linkedin.com/pulse/infraestrutura-est%25C3%25A1vel-o-alicerce-secreto-da-%25C3%25A1gil-e-s-concei%25C3%25A7%25C3%25A3o-libdf",
+      publicationDate: "2024-07-25",
+    },
     {
       title: "Do Código ao Cabo: Uma Jornada de Redescoberta",
       description: "Um artigo sobre a jornada para unir o desenvolvimento de software moderno à infraestrutura de hardware crítica, e por que essa união é essencial para o futuro da tecnologia.",
@@ -169,6 +181,6 @@ export const articles = {
 export const socialLinks = [
     { name: 'GitHub', icon: Github, url: 'https://github.com/davidsoncabista/Portifolio' },
     { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/davidsonsconceicao' },
-    { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/davidson.dev.br' },
+    { name: "Instagram", icon: Instagram, url: "https://instagram.com/davidson.dev.br" },
     { name: 'Youtube', icon: Youtube, url: 'https://www.youtube.com/@davidson.developer' },
 ];
