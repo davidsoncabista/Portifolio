@@ -1,6 +1,7 @@
+
 import { timeline as timelineData } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Briefcase } from 'lucide-react';
+import { Briefcase, GraduationCap } from 'lucide-react';
 
 export function TimelineSection({ lang }: { lang: string }) {
   const timeline = timelineData[lang as keyof typeof timelineData] || [];
@@ -30,7 +31,7 @@ export function TimelineSection({ lang }: { lang: string }) {
                   {/* Invisible spacer on the other side */}
                 </div>
                 <div className="absolute left-1/2 top-1 w-6 h-6 rounded-full bg-primary border-4 border-background -translate-x-1/2 flex items-center justify-center">
-                   <Briefcase className="w-3 h-3 text-primary-foreground"/>
+                   <item.icon className="w-3 h-3 text-primary-foreground"/>
                 </div>
                 <div className={`flex-1 ${index % 2 === 0 ? 'pl-8' : 'pr-8 text-right'}`}>
                    {/* Main content here */}
