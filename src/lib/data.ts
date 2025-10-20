@@ -1,4 +1,4 @@
-import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl } from 'lucide-react';
+import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl, Briefcase, GraduationCap } from 'lucide-react';
 
 export const projects = {
   en: [
@@ -137,6 +137,12 @@ export const skills = {
 export const articles = {
   en: [
     {
+      title: "The Silent Guardians",
+      description: "A reflection on the infrastructure components and professionals who silently ensure the stability and operation of modern technology.",
+      url: "https://www.linkedin.com/pulse/os-guardi%25C3%25B5es-silenciosos-davidson-s-concei%25C3%25A7%25C3%25A3o-nqdvf/",
+      publicationDate: "2024-07-28",
+    },
+    {
       title: "Stable Infrastructure: The Secret Foundation of Agile AI",
       description: "An analysis of how a robust and well-planned IT infrastructure is crucial for the success and agility of Artificial Intelligence projects.",
       url: "https://www.linkedin.com/pulse/infraestrutura-est%25C3%25A1vel-o-alicerce-secreto-da-%25C3%25A1gil-e-s-concei%25C3%25A7%25C3%25A3o-libdf",
@@ -156,6 +162,12 @@ export const articles = {
     }
   ],
   pt: [
+    {
+      title: "Os Guardiões Silenciosos",
+      description: "Uma reflexão sobre os componentes e profissionais de infraestrutura que, silenciosamente, garantem a estabilidade e o funcionamento da tecnologia moderna.",
+      url: "https://www.linkedin.com/pulse/os-guardi%25C3%25B5es-silenciosos-davidson-s-concei%25C3%25A7%25C3%25A3o-nqdvf/",
+      publicationDate: "2024-07-28",
+    },
     {
       title: "Infraestrutura Estável: O Alicerce Secreto da IA Ágil",
       description: "Uma análise sobre como uma infraestrutura de TI robusta e bem planejada é crucial para o sucesso e a agilidade de projetos de Inteligência Artificial.",
