@@ -76,7 +76,7 @@ export function Header() {
                <SheetTitle className="sr-only">Menu</SheetTitle>
             </SheetHeader>
             <Link href={getLocalizedPath('/')} className="mr-6 flex items-center space-x-2">
-              <Image src="/logo trans davidson.dev.png" alt="Davidson.dev Logo" width={24} height={24} className="h-6 w-6 text-primary" />
+              <Image src="/logo-trans-davidson.dev.png" alt="Davidson.dev Logo" width={24} height={24} className="h-6 w-6 text-primary" />
               <span className="font-bold font-headline">Davidson.dev</span>
             </Link>
             <div className="grid gap-2 py-6">
