@@ -75,16 +75,6 @@ export const skills = {
             { name: "Network Security (Firewalls)", proficiency: 80, logo: "https://img.icons8.com/ios/50/firewall.png" },
         ],
     },
-    {
-        category: "Innovation & AI (Architecture)",
-        icon: BrainCircuit,
-        list: [
-            { name: "On-Premise LLM Architecture (Ollama)", proficiency: 85, logo: "https://ollama.com/public/ollama.png" },
-            { name: "Data Science (Python / Scikit-learn)", proficiency: 75, logo: "https://cdn.simpleicons.org/scikitlearn/F7931D" },
-            { name: "Data Pipelines / ETL", proficiency: 80, logo: "https://img.icons8.com/wired/64/000000/extract-transform-load.png" },
-            { name: "GenAI APIs (Integration)", proficiency: 85, logo: "https://cdn.simpleicons.org/googlegemini/8E77F0" },
-        ],
-    },
   ],
   pt: [
     {
@@ -119,16 +109,6 @@ export const skills = {
             { name: "Redes Ópticas (DWDM)", proficiency: 85, logo: "https://img.icons8.com/ios/50/fiber-optic.png" },
             { name: "Monitoramento de Rede", proficiency: 90, logo: "https://img.icons8.com/ios/50/network.png" },
             { name: "Segurança de Rede (Firewalls)", proficiency: 80, logo: "https://img.icons8.com/ios/50/firewall.png" },
-        ],
-    },
-    {
-        category: "Inovação & IA (Arquitetura)",
-        icon: BrainCircuit,
-        list: [
-            { name: "Arquitetura LLM On-Premise (Ollama)", proficiency: 85, logo: "https://ollama.com/public/ollama.png" },
-            { name: "Data Science (Python / Scikit-learn)", proficiency: 75, logo: "https://cdn.simpleicons.org/scikitlearn/F7931D" },
-            { name: "Pipelines de Dados / ETL", proficiency: 80, logo: "https://img.icons8.com/wired/64/000000/extract-transform-load.png" },
-            { name: "APIs de GenAI (Integração)", proficiency: 85, logo: "https://cdn.simpleicons.org/googlegemini/8E77F0" },
         ],
     },
   ]
