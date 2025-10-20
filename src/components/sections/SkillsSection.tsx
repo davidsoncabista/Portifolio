@@ -2,6 +2,7 @@ import { skills as skillsData } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
+import Image from 'next/image';
 
 export function SkillsSection({ lang }: { lang: string }) {
   const skills = skillsData[lang as keyof typeof skillsData] || [];
@@ -34,7 +35,18 @@ export function SkillsSection({ lang }: { lang: string }) {
                 {skillCategory.list.map((skill) => (
                   <div key={skill.name} className="grid gap-2">
                     <div className="flex items-center justify-between">
-                      <h3 className="font-semibold">{skill.name}</h3>
+                      <div className="flex items-center gap-2">
+                        {skill.logo && (
+                           <Image 
+                              src={skill.logo} 
+                              alt={`${skill.name} logo`} 
+                              width={20} 
+                              height={20}
+                              className="h-5 w-5 object-contain" 
+                           />
+                        )}
+                        <h3 className="font-semibold">{skill.name}</h3>
+                      </div>
                       <Badge variant="secondary">{skill.proficiency}%</Badge>
                     </div>
                     <Progress value={skill.proficiency} aria-label={`${skill.name} proficiency`} />
