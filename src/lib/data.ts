@@ -1,4 +1,4 @@
-import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl } from 'lucide-react';
+import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl, GraduationCap, Briefcase } from 'lucide-react';
 
 export const projects = {
   en: [
@@ -137,9 +137,9 @@ export const skills = {
 export const articles = {
   en: [
     {
-      title: "From Code to Cable: The Evolution of a Full-Stack Architect",
+      title: "From Code to Cable: A Journey of Rediscovery",
       description: "An article about the journey of bridging the gap between modern software development and critical hardware infrastructure, and why this union is essential for the future of technology.",
-      url: "https://www.linkedin.com/pulse/do-c%25C3%25B3digo-ao-cabo-a-evolu%25C3%25A7%25C3%25A3o-de-um-arquiteto-full-stack-conceicao-7j9pf/",
+      url: "https://www.linkedin.com/pulse/do-c%25C3%25B3digo-ao-cabo-uma-jornada-de-redescoberta-da-davidson-s-concei%25C3%25A7%25C3%25A3o-yo1mf/",
       publicationDate: "2024-07-20",
     },
     {
@@ -151,9 +151,9 @@ export const articles = {
   ],
   pt: [
     {
-      title: "Do Código ao Cabo: A Evolução de um Arquiteto Full-Stack",
+      title: "Do Código ao Cabo: Uma Jornada de Redescoberta",
       description: "Um artigo sobre a jornada para unir o desenvolvimento de software moderno à infraestrutura de hardware crítica, e por que essa união é essencial para o futuro da tecnologia.",
-      url: "https://www.linkedin.com/pulse/do-c%25C3%25B3digo-ao-cabo-a-evolu%25C3%25A7%25C3%25A3o-de-um-arquiteto-full-stack-conceicao-7j9pf/",
+      url: "https://www.linkedin.com/pulse/do-c%25C3%25B3digo-ao-cabo-uma-jornada-de-redescoberta-da-davidson-s-concei%25C3%25A7%25C3%25A3o-yo1mf/",
       publicationDate: "2024-07-20",
     },
     {
