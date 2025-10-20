@@ -134,82 +134,24 @@ export const skills = {
   ]
 };
 
-export const timeline = {
+export const articles = {
   en: [
     {
-      date: "2021 - Present",
-      title: "Lead Infrastructure Solutions Architect",
-      company: "TIM Brasil (Data Center O&M)",
-      description: "Leading the architecture and implementation of a high-availability private cloud for mission-critical O&M systems, migrating from a PaaS prototype to an on-premise Proxmox cluster.",
-      icon: Briefcase,
-    },
-    {
-      date: "2019 - 2021",
-      title: "Senior Full-Stack Developer",
-      company: "DataDriven Co.",
-      description: "Developed and maintained core features for a high-traffic analytics platform. Optimized database queries, improving API response times by 50%. Mentored junior developers.",
-      icon: Briefcase,
-    },
-    {
-      date: "2017 - 2019",
-      title: "Software Engineer",
-      company: "Creative Apps LLC",
-      description: "Built responsive user interfaces and RESTful APIs for various client projects. Gained proficiency in agile methodologies and version control with Git.",
-      icon: Briefcase,
-    },
-    {
-      date: "2017 - 2018",
-      title: "Post-Graduate in Network Engineering",
-      company: "Universidade Estácio de Sá",
-      description: "Specialization focused on advanced network design, security, and management, providing a solid foundation for complex infrastructure projects.",
-      icon: GraduationCap,
-    },
-    {
-      date: "2016",
-      title: "B.S. in Computer Science",
-      company: "Universidade Federal Fluminense, Niterói",
-      description: "Graduated with honors, focusing on distributed systems and artificial intelligence. Completed a final year project on peer-to-peer networking.",
-      icon: GraduationCap,
+      title: "From Code to Cable: The Evolution of a Full-Stack Architect",
+      description: "An article about the journey of bridging the gap between modern software development and critical hardware infrastructure, and why this union is essential for the future of technology.",
+      url: "https://www.linkedin.com/pulse/do-c%25C3%25B3digo-ao-cabo-a-evolu%25C3%25A7%25C3%25A3o-de-um-arquiteto-full-stack-conceicao-7j9pf/",
+      publicationDate: "2024-07-20",
     },
   ],
   pt: [
     {
-      date: "2021 - Presente",
-      title: "Arquiteto de Soluções de Infraestrutura Líder",
-      company: "TIM Brasil (Data Center O&M)",
-      description: "Liderando a arquitetura e implementação de uma nuvem privada de alta disponibilidade para sistemas críticos de O&M, migrando de um protótipo PaaS para um cluster Proxmox on-premise.",
-      icon: Briefcase,
-    },
-    {
-      date: "2019 - 2021",
-      title: "Desenvolvedor Full-Stack Sênior",
-      company: "DataDriven Co.",
-      description: "Desenvolvi e mantive recursos principais para uma plataforma de análise de alto tráfego. Otimizei consultas de banco de dados, melhorando os tempos de resposta da API em 50%. Mentiorei desenvolvedores juniores.",
-      icon: Briefcase,
-    },
-    {
-      date: "2017 - 2019",
-      title: "Engenheiro de Software",
-      company: "Creative Apps LLC",
-      description: "Construí interfaces de usuário responsivas e APIs RESTful para vários projetos de clientes. Ganhei proficiência em metodologias ágeis e controle de versão com Git.",
-      icon: Briefcase,
-    },
-    {
-      date: "2017 - 2018",
-      title: "Pós-Graduação em Engenharia de Redes",
-      company: "Universidade Estácio de Sá",
-      description: "Especialização com foco em projeto, segurança e gerenciamento avançado de redes, fornecendo uma base sólida para projetos de infraestrutura complexa.",
-      icon: GraduationCap,
-    },
-    {
-      date: "2016",
-      title: "Bacharel em Ciência da Computação",
-      company: "Universidade Federal Fluminense, Niterói",
-      description: "Formado com honras, com foco em sistemas distribuídos e inteligência artificial. Concluí um projeto de final de ano sobre redes ponto a ponto.",
-      icon: GraduationCap,
-    },
+      title: "Do Código ao Cabo: A Evolução de um Arquiteto Full-Stack",
+      description: "Um artigo sobre a jornada para unir o desenvolvimento de software moderno à infraestrutura de hardware crítica, e por que essa união é essencial para o futuro da tecnologia.",
+      url: "https://www.linkedin.com/pulse/do-c%25C3%25B3digo-ao-cabo-a-evolu%25C3%25A7%25C3%25A3o-de-um-arquiteto-full-stack-conceicao-7j9pf/",
+      publicationDate: "2024-07-20",
+    }
   ]
-};
+}
 
 
 export const socialLinks = [
@@ -218,12 +160,3 @@ export const socialLinks = [
     { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/davidson.dev.br' },
     { name: 'Youtube', icon: Youtube, url: 'https://www.youtube.com/@davidson.developer' },
 ];
-
-    
-
-
-
-
-    
-
-    
