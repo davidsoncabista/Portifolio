@@ -1,6 +1,6 @@
 
 
-import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl, GraduationCap } from 'lucide-react';
+import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl, GraduationCap, Briefcase } from 'lucide-react';
 
 export const projects = {
   en: [
