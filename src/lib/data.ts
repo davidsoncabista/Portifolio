@@ -46,7 +46,7 @@ export const skills = {
         icon: ServerCog,
         list: [
             { name: "HA Virtualization (Proxmox)", proficiency: 95, logo: "https://cdn.simpleicons.org/proxmox/E57000" },
-            { name: "SAN/ZFS Storage (HP MSA)", proficiency: 90, logo: "https://cdn.simpleicons.org/truenas/0095D5" },
+            { name: "SAN/ZFS Storage (TrueNAS)", proficiency: 90, logo: "https://cdn.simpleicons.org/truenas/0095D5" },
             { name: "Routing/Switching (Cisco Nexus)", proficiency: 85, logo: "https://cdn.simpleicons.org/cisco/1BA0D7" },
             { name: "Orchestration (Docker / Kubernetes)", proficiency: 80, logo: "https://cdn.simpleicons.org/docker/2496ED" },
             { name: "IaC (Terraform) & CI/CD", proficiency: 85, logo: "https://cdn.simpleicons.org/terraform/7B42BC" },
@@ -81,7 +81,7 @@ export const skills = {
         list: [
             { name: "On-Premise LLM Architecture (Ollama)", proficiency: 85, logo: "https://ollama.com/public/ollama.png" },
             { name: "Data Science (Python / Scikit-learn)", proficiency: 75, logo: "https://cdn.simpleicons.org/scikitlearn/F7931D" },
-            { name: "Data Pipelines / ETL", proficiency: 80, logo: "https://img.icons8.com/ios/50/data-transfer.png" },
+            { name: "Data Pipelines / ETL", proficiency: 80, logo: "https://img.icons8.com/wired/64/000000/extract-transform-load.png" },
             { name: "GenAI APIs (Integration)", proficiency: 85, logo: "https://cdn.simpleicons.org/googlegemini/8E77F0" },
         ],
     },
@@ -92,7 +92,7 @@ export const skills = {
         icon: ServerCog,
         list: [
             { name: "Virtualização HA (Proxmox)", proficiency: 95, logo: "https://cdn.simpleicons.org/proxmox/E57000" },
-            { name: "Storage SAN/ZFS (HP MSA)", proficiency: 90, logo: "https://cdn.simpleicons.org/truenas/0095D5" },
+            { name: "Storage SAN/ZFS (TrueNAS)", proficiency: 90, logo: "https://cdn.simpleicons.org/truenas/0095D5" },
             { name: "Roteamento/Switching (Cisco Nexus)", proficiency: 85, logo: "https://cdn.simpleicons.org/cisco/1BA0D7" },
             { name: "Orquestração (Docker / Kubernetes)", proficiency: 80, logo: "https://cdn.simpleicons.org/docker/2496ED" },
             { name: "IaC (Terraform) & CI/CD", proficiency: 85, logo: "https://cdn.simpleicons.org/terraform/7B42BC" },
@@ -127,7 +127,7 @@ export const skills = {
         list: [
             { name: "Arquitetura LLM On-Premise (Ollama)", proficiency: 85, logo: "https://ollama.com/public/ollama.png" },
             { name: "Data Science (Python / Scikit-learn)", proficiency: 75, logo: "https://cdn.simpleicons.org/scikitlearn/F7931D" },
-            { name: "Pipelines de Dados / ETL", proficiency: 80, logo: "https://img.icons8.com/ios/50/data-transfer.png" },
+            { name: "Pipelines de Dados / ETL", proficiency: 80, logo: "https://img.icons8.com/wired/64/000000/extract-transform-load.png" },
             { name: "APIs de GenAI (Integração)", proficiency: 85, logo: "https://cdn.simpleicons.org/googlegemini/8E77F0" },
         ],
     },
