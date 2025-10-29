@@ -45,7 +45,13 @@ const nextConfig: NextConfig = {
         hostname: 'ollama.com',
         port: '',
         pathname: '/**',
-      }
+      },
+       {
+        protocol: 'https',
+        hostname: 'davidson-portfolio-api.onrender.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

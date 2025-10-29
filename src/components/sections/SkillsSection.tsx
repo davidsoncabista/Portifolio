@@ -1,17 +1,29 @@
-import { skills as skillsData } from '@/lib/data';
+import { getSkills, type SkillCategory } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 
-export function SkillsSection({ lang }: { lang: string }) {
-  const skills = skillsData[lang as keyof typeof skillsData] || [];
+export async function SkillsSection({ lang }: { lang: string }) {
+  const skills: SkillCategory[] = await getSkills(lang);
 
   const title = lang === 'pt' ? 'Minhas Habilidades Técnicas' : 'My Technical Skills';
   const description = lang === 'pt' 
     ? 'Um resumo das tecnologias e ferramentas com as quais trabalho para construir aplicações web e infraestrutura modernas.'
     : 'A snapshot of the technologies and tools I work with to build modern web applications and infrastructure.';
 
+  if (!skills || skills.length === 0) {
+    return (
+      <section id="skills" className="w-full py-12 md:py-24">
+        <div className="container px-4 md:px-6 text-center">
+            <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">{title}</h2>
+            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mx-auto mt-4">
+              {lang === 'pt' ? 'Carregando habilidades...' : 'Loading skills...'}
+            </p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="skills" className="w-full py-12 md:py-24">
@@ -43,6 +55,7 @@ export function SkillsSection({ lang }: { lang: string }) {
                               width={20} 
                               height={20}
                               className="h-5 w-5 object-contain" 
+                              unoptimized
                            />
                         )}
                         <h3 className="font-semibold">{skill.name}</h3>
