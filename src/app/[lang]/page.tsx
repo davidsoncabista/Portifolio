@@ -12,11 +12,11 @@ export default function Home({ params }: { params: { lang: string } }) {
       <HeroSection />
       <div className="container mx-auto px-4">
         <Separator className="my-12 md:my-24" />
-        <SkillsSection lang={lang} />
+        <FeaturedProjectsSection lang={lang} />
         <Separator className="my-12 md:my-24" />
         <ArticlesSection lang={lang} />
         <Separator className="my-12 md:my-24" />
-        <FeaturedProjectsSection lang={lang} />
+        <SkillsSection lang={lang} />
       </div>
     </div>
   );
