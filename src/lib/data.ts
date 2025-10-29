@@ -30,9 +30,9 @@ const ICONS: { [key: string]: LucideIcon } = {
   "Critical Infrastructure & DevOps": ServerCog,
   "Full-Stack Development": Code2,
   "Telecommunications & Networks": TowerControl,
-  "Infraestrutura Crítica & DevOps": ServerCog,
+  "Infraestrutura Crítica": ServerCog,
   "Desenvolvimento Full-Stack": Code2,
-  "Telecomunicações & Redes": TowerControl,
+  "Telecomunicações": TowerControl,
 };
 
 // Fetch Projects from the API
