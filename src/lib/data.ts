@@ -1,119 +1,78 @@
 import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
-export const projects = {
-  en: [
-    {
-      title: "InfraVision",
-      description: "A management dashboard for mission-critical data center infrastructure (O&M). It replaces spreadsheets with a Single Source of Truth for all physical assets (racks, servers, network). The project evolved from a PoC (PaaS/Azure) to an HA Proxmox virtualization cluster on HP Gen9 servers (1TB+ RAM), connected to SAN Storage (HP MSA) and a 40GbE network (Cisco Nexus). It demonstrates the ability to go from front-end development to enterprise-level infrastructure architecture and implementation.",
-      status: "Validated Prototype / In Production (Private Cloud)",
-      technologies: ["React/Node.js (App)", "Proxmox HA", "Cisco Nexus", "HP SAN", "Terraform"],
-      demoUrl: "https://studio--infravision2.us-central1.hosted.app/login1",
-      githubUrl: "https://github.com/davidsoncabista/Portifolio",
-    },
-    {
-      title: "Association Management System (Dungeon App)",
-      description: "A full-stack web platform for managing room reservations, members, and dynamic access control (ACL) for the Association. A high-value solution that automates administrative processes and includes payment gateway integration.",
-      status: "Active / Launched",
-      technologies: ["Next.js", "TypeScript", "Firebase/Firestore", "Tailwind CSS", "Payment Integration"],
-      demoUrl: "https://studio--adbelm.us-central1.hosted.app/landing",
-      githubUrl: "https://github.com/davidsoncabista/Portifolio",
+const API_BASE_URL = 'https://davidson-portfolio-api.onrender.com';
+
+// Types to match the API response
+export type Project = {
+  title: string;
+  description: string;
+  status: string;
+  technologies: string[];
+  demoUrl: string;
+  githubUrl: string;
+};
+
+export type Skill = {
+  name: string;
+  proficiency: number;
+  logo: string;
+}
+
+export type SkillCategory = {
+  category: string;
+  icon: LucideIcon;
+  list: Skill[];
+}
+
+const ICONS: { [key: string]: LucideIcon } = {
+  "Critical Infrastructure & DevOps": ServerCog,
+  "Full-Stack Development": Code2,
+  "Telecommunications & Networks": TowerControl,
+  "Infraestrutura Crítica & DevOps": ServerCog,
+  "Desenvolvimento Full-Stack": Code2,
+  "Telecomunicações & Redes": TowerControl,
+};
+
+// Fetch Projects from the API
+export async function getProjects(lang: string): Promise<Project[]> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/projects?lang=${lang}`, { next: { revalidate: 3600 } });
+    if (!response.ok) {
+      console.error("Failed to fetch projects:", response.statusText);
+      return [];
     }
-  ],
-  pt: [
-    {
-      title: "InfraVision",
-      description: "Um painel de gerenciamento para infraestrutura de data center de missão crítica (O&M). Substitui planilhas por uma Fonte Única da Verdade para todos os ativos físicos (racks, servidores, rede). O projeto evoluiu de um PoC (PaaS/Azure) para um cluster de virtualização Proxmox HA em servidores HP Gen9 (1TB+ RAM), conectado a Storage SAN (HP MSA) e rede 40GbE (Cisco Nexus). Demonstra a capacidade de ir do desenvolvimento front-end à arquitetura e implementação de infraestrutura de nível empresarial.",
-      status: "Protótipo Validado / Em Produção (Nuvem Privada)",
-      technologies: ["React/Node.js (App)", "Proxmox HA", "Cisco Nexus", "HP SAN", "Terraform"],
-      demoUrl: "https://studio--infravision2.us-central1.hosted.app/login1",
-      githubUrl: "https://github.com/davidsoncabista/Portifolio",
-    },
-    {
-      title: "Sistema de Gestão para Associação (Dungeon App)",
-      description: "Plataforma web full-stack para gestão de reservas de salas, membros e controle de acesso dinâmico (ACL) da Associação. Solução de alto valor que automação de processos administrativos e inclui integração com gateway de pagamento.",
-      status: "Ativo / Lançado",
-      technologies: ["Next.js", "TypeScript", "Firebase/Firestore", "Tailwind CSS", "Integração de Pagamentos"],
-      demoUrl: "https://studio--adbelm.us-central1.hosted.app/landing",
-      githubUrl: "https://github.com/davidsoncabista/Portifolio",
-    },
-  ]
-};
+    const projects = await response.json();
+    return projects;
+  } catch (error) {
+    console.error("Error fetching projects:", error);
+    return []; // Return empty array as fallback
+  }
+}
 
-export const skills = {
-  en: [
-    {
-        category: "Critical Infrastructure & DevOps",
-        icon: ServerCog,
-        list: [
-            { name: "HA Virtualization (Proxmox)", proficiency: 95, logo: "https://cdn.simpleicons.org/proxmox/E57000" },
-            { name: "SAN/ZFS Storage (TrueNAS)", proficiency: 90, logo: "https://cdn.simpleicons.org/truenas/0095D5" },
-            { name: "Routing/Switching (Cisco Nexus)", proficiency: 85, logo: "https://cdn.simpleicons.org/cisco/1BA0D7" },
-            { name: "Orchestration (Docker / Kubernetes)", proficiency: 80, logo: "https://cdn.simpleicons.org/docker/2496ED" },
-            { name: "IaC (Terraform) & CI/CD", proficiency: 85, logo: "https://cdn.simpleicons.org/terraform/7B42BC" },
-            { name: "Cloud Providers (AWS)", proficiency: 80, logo: "https://cdn.simpleicons.org/amazonaws/FF9900" },
-            { name: "Nginx", proficiency: 90, logo: "https://cdn.simpleicons.org/nginx/009639" },
-        ],
-    },
-    {
-        category: "Full-Stack Development",
-        icon: Code2,
-        list: [
-            { name: "React / Next.js (Frontend)", proficiency: 95, logo: "https://cdn.simpleicons.org/nextdotjs/000000" },
-            { name: "Node.js / Express (Backend APIs)", proficiency: 90, logo: "https://cdn.simpleicons.org/nodedotjs/5FA04E" },
-            { name: "TypeScript", proficiency: 85, logo: "https://cdn.simpleicons.org/typescript/3178C6" },
-            { name: "SQL (MS SQL Server / MySQL)", proficiency: 85, logo: "https://cdn.simpleicons.org/mysql/4479A1" },
-            { name: "Python (Automation)", proficiency: 80, logo: "https://cdn.simpleicons.org/python/3776AB" },
-        ],
-    },
-    {
-        category: "Telecommunications & Networks",
-        icon: TowerControl,
-        list: [
-            { name: "Routing & Switching (BGP, OSPF)", proficiency: 90, logo: "https://img.icons8.com/ios/50/cisco-router.png" },
-            { name: "Optical Networks (DWDM)", proficiency: 85, logo: "https://img.icons8.com/ios/50/fiber-optic.png" },
-            { name: "Network Monitoring", proficiency: 90, logo: "https://img.icons8.com/ios/50/network.png" },
-            { name: "Network Security (Firewalls)", proficiency: 80, logo: "https://img.icons8.com/ios/50/firewall.png" },
-        ],
-    },
-  ],
-  pt: [
-    {
-        category: "Infraestrutura Crítica & DevOps",
-        icon: ServerCog,
-        list: [
-            { name: "Virtualização HA (Proxmox)", proficiency: 95, logo: "https://cdn.simpleicons.org/proxmox/E57000" },
-            { name: "Storage SAN/ZFS (TrueNAS)", proficiency: 90, logo: "https://cdn.simpleicons.org/truenas/0095D5" },
-            { name: "Roteamento/Switching (Cisco Nexus)", proficiency: 85, logo: "https://cdn.simpleicons.org/cisco/1BA0D7" },
-            { name: "Orquestração (Docker / Kubernetes)", proficiency: 80, logo: "https://cdn.simpleicons.org/docker/2496ED" },
-            { name: "IaC (Terraform) & CI/CD", proficiency: 85, logo: "https://cdn.simpleicons.org/terraform/7B42BC" },
-            { name: "Cloud Providers (AWS)", proficiency: 80, logo: "https://cdn.simpleicons.org/amazonaws/FF9900" },
-            { name: "Nginx", proficiency: 90, logo: "https://cdn.simpleicons.org/nginx/009639" },
-        ],
-    },
-    {
-        category: "Desenvolvimento Full-Stack",
-        icon: Code2,
-        list: [
-            { name: "React / Next.js (Frontend)", proficiency: 95, logo: "https://cdn.simpleicons.org/nextdotjs/000000" },
-            { name: "Node.js / Express (Backend APIs)", proficiency: 90, logo: "https://cdn.simpleicons.org/nodedotjs/5FA04E" },
-            { name: "TypeScript", proficiency: 85, logo: "https://cdn.simpleicons.org/typescript/3178C6" },
-            { name: "SQL (MS SQL Server / MySQL)", proficiency: 85, logo: "https://cdn.simpleicons.org/mysql/4479A1" },
-            { name: "Python (Automação)", proficiency: 80, logo: "https://cdn.simpleicons.org/python/3776AB" },
-        ],
-    },
-    {
-        category: "Telecomunicações & Redes",
-        icon: TowerControl,
-        list: [
-            { name: "Roteamento e Switching (BGP, OSPF)", proficiency: 90, logo: "https://img.icons8.com/ios/50/cisco-router.png" },
-            { name: "Redes Ópticas (DWDM)", proficiency: 85, logo: "https://img.icons8.com/ios/50/fiber-optic.png" },
-            { name: "Monitoramento de Rede", proficiency: 90, logo: "https://img.icons8.com/ios/50/network.png" },
-            { name: "Segurança de Rede (Firewalls)", proficiency: 80, logo: "https://img.icons8.com/ios/50/firewall.png" },
-        ],
-    },
-  ]
-};
+// Fetch Skills from the API
+export async function getSkills(lang: string): Promise<SkillCategory[]> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/skills?lang=${lang}`, { next: { revalidate: 3600 } });
+     if (!response.ok) {
+      console.error("Failed to fetch skills:", response.statusText);
+      return [];
+    }
+    const skillsByCategory: { [key: string]: Skill[] } = await response.json();
+    
+    return Object.entries(skillsByCategory).map(([category, list]) => ({
+      category,
+      icon: ICONS[category] || ServerCog,
+      list,
+    }));
+  } catch (error) {
+    console.error("Error fetching skills:", error);
+    return []; // Return empty array as fallback
+  }
+}
 
+
+// Static data that is not in the API
 export const articles = {
   en: [
     {
@@ -167,7 +126,7 @@ export const articles = {
       publicationDate: "2024-07-15",
     }
   ]
-}
+};
 
 
 export const socialLinks = [
@@ -176,5 +135,3 @@ export const socialLinks = [
     { name: "Instagram", icon: Instagram, url: "https://instagram.com/davidson.dev.br" },
     { name: 'Youtube', icon: Youtube, url: 'https://www.youtube.com/@davidson.developer' },
 ];
-
-    
