@@ -17,6 +17,7 @@ export type Skill = {
   name: string;
   proficiency: number;
   logo: string;
+  category: string;
 }
 
 export type SkillCategory = {
@@ -58,8 +59,17 @@ export async function getSkills(lang: string): Promise<SkillCategory[]> {
       console.error("Failed to fetch skills:", response.statusText);
       return [];
     }
-    const skillsByCategory: { [key: string]: Skill[] } = await response.json();
+    const skills: Skill[] = await response.json();
     
+    const skillsByCategory = skills.reduce((acc, skill) => {
+      const { category } = skill;
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(skill);
+      return acc;
+    }, {} as { [key: string]: Skill[] });
+
     return Object.entries(skillsByCategory).map(([category, list]) => ({
       category,
       icon: ICONS[category] || ServerCog,
