@@ -44,28 +44,35 @@ export async function SkillsSection({ lang }: { lang: string }) {
                 <CardTitle className="font-headline text-2xl">{skillCategory.category}</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-6">
-                {skillCategory.list.map((skill) => (
-                  <div key={skill.name} className="grid gap-2">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        {skill.logo && (
-                           <Image 
-                              src={skill.logo.includes('img.icons8.com') ? skill.logo.replace('/FFFFFF', '') : skill.logo}
-                              alt={`${skill.name} logo`} 
-                              width={20} 
+                {skillCategory.list.map((skill) => {
+                  let logoSrc = skill.logo || '';
+                  if (logoSrc.includes('img.icons8.com')) {
+                    logoSrc = logoSrc.replace('/FFFFFF', '');
+                  }
+                  
+                  return (
+                    <div key={skill.name} className="grid gap-2">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          {skill.logo && (
+                            <Image
+                              src={encodeURI(logoSrc)}
+                              alt={`${skill.name} logo`}
+                              width={20}
                               height={20}
                               className="h-5 w-5 object-contain"
                               style={skill.logo.includes('img.icons8.com') ? { filter: 'brightness(0) invert(1)' } : {}}
                               unoptimized
-                           />
-                        )}
-                        <h3 className="font-semibold">{skill.name}</h3>
+                            />
+                          )}
+                          <h3 className="font-semibold">{skill.name}</h3>
+                        </div>
+                        <Badge variant="secondary">{skill.proficiency}%</Badge>
                       </div>
-                      <Badge variant="secondary">{skill.proficiency}%</Badge>
+                      <Progress value={skill.proficiency} aria-label={`${skill.name} proficiency`} />
                     </div>
-                    <Progress value={skill.proficiency} aria-label={`${skill.name} proficiency`} />
-                  </div>
-                ))}
+                  );
+                })}
               </CardContent>
             </Card>
           ))}
