@@ -16,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk'
 });
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: 'Davidson Conceição | Portfolio',
   description: 'The personal portfolio of Davidson Conceição, an Infrastructure Solutions Architect and Full-Stack Developer.',
   keywords: ['Davidson Conceição', 'Full-Stack Developer', 'Infrastructure Architect', 'DevOps', 'React', 'Next.js', 'AWS', 'TIM Brasil', 'Portfolio'],
@@ -34,12 +34,12 @@ export const metadata: Metadata = {
 
 export async function generateMetadata({ params: { lang } }: { params: { lang: string } }) {
   return {
-    ...metadata,
+    ...baseMetadata,
     openGraph: {
-      ...metadata.openGraph,
+      ...baseMetadata.openGraph,
       locale: lang === 'en' ? 'en_US' : 'pt_BR',
     }
-  };
+  } as Metadata;
 }
 
 export default function RootLayout({
