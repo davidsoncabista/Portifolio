@@ -32,7 +32,17 @@ export const metadata: Metadata = {
   }
 };
 
-export default async function RootLayout({
+export async function generateMetadata({ params: { lang } }: { params: { lang: string } }) {
+  return {
+    ...metadata,
+    openGraph: {
+      ...metadata.openGraph,
+      locale: lang === 'en' ? 'en_US' : 'pt_BR',
+    }
+  };
+}
+
+export default function RootLayout({
   children,
   params,
 }: {
