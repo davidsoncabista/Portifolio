@@ -3,37 +3,114 @@ name: Deploy Portfolio Frontend
 on:
   push:
     branches:
-      - main # Roda sempre que houver um push para a branch principal
+      - main
+  workflow_dispatch: # Permite executar manualmente
+
+env:
+  NODE_VERSION: '20'
+  PM2_APP_NAME: 'PortfolioFrontend'
 
 jobs:
-  deploy:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Deploy via SSH
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: 192.168.0.112 # IP do seu servidor Ubuntu
-        username: root # Usuário que você autorizou a chave SSH
-        key: ${{ secrets.SSH_PRIVATE_KEY }} # O segredo que você criou no GitHub
-        script: |
-          echo "Iniciando deploy em $(date)"
-          
-          # 1. Navega para a pasta do projeto
-          cd /var/www/portfolio-app
-          
-          # 2. Puxa as últimas mudanças do GitHub (Se você comitou a partir do servidor, o pull é rápido)
-          git pull origin main
-          
-          # 3. Instala novas dependências (se houver)
-          npm install
-          
-          # 4. Reconstrói a aplicação Next.js
-          sudo npx next build
-          
-          # 5. Reinicia o processo no PM2 para aplicar as mudanças
-          pm2 restart PortfolioFrontend
-          
-          echo "Deploy concluído com sucesso!"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Production Server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 192.168.0.112
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true # Para em caso de erro
+          envs: NODE_VERSION,PM2_APP_NAME
+          script: |
+            set -e # Para o script se algum comando falhar
+            echo "🚀 Iniciando deploy em $(date)"
+            
+            # 1. Configurar Node.js caso necessário
+            if ! command -v node &> /dev/null || [ "$(node -v)" != "v${NODE_VERSION}"* ]; then
+              echo "📦 Atualizando Node.js para v${NODE_VERSION}..."
+              curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | sudo -E bash -
+              sudo apt-get install -y nodejs
+            fi
+            
+            # 2. Navegar para a pasta do projeto
+            cd /var/www/portfolio-app
+            echo "📂 Entrando no diretório do projeto..."
+            
+            # 3. Backup do .env se existir
+            if [ -f .env ]; then
+              cp .env .env.backup
+              echo "💾 Backup do .env criado"
+            fi
+            
+            # 4. Atualizar código
+            echo "⬇️ Atualizando código do repositório..."
+            git fetch origin main
+            git reset --hard origin/main
+            
+            # 5. Restaurar .env se necessário
+            if [ -f .env.backup ]; then
+              mv .env.backup .env
+              echo "🔄 Arquivo .env restaurado"
+            fi
+            
+            # 6. Instalar dependências
+            echo "📦 Instalando dependências..."
+            npm ci --production
+            
+            # 7. Build da aplicação
+            echo "🏗️ Construindo aplicação..."
+            NEXT_TELEMETRY_DISABLED=1 npm run build
+            
+            # 8. Verificar se o PM2 está instalado
+            if ! command -v pm2 &> /dev/null; then
+              echo "📦 Instalando PM2..."
+              sudo npm install -g pm2
+            fi
+            
+            # 9. Reiniciar aplicação
+            echo "🔄 Reiniciando aplicação no PM2..."
+            if pm2 list | grep -q "${PM2_APP_NAME}"; then
+              pm2 reload ${PM2_APP_NAME}
+            else
+              pm2 start npm --name "${PM2_APP_NAME}" -- start
+            fi
+            
+            # 10. Limpar cache e arquivos temporários
+            echo "🧹 Limpando cache..."
+            npm cache clean --force
+            
+            # Verificar se a aplicação está respondendo
+            echo "🏥 Verificando saúde da aplicação..."
+            for i in {1..6}; do
+              if curl -s http://localhost:9002 > /dev/null; then
+                echo "✅ Aplicação está respondendo corretamente!"
+                echo "✨ Deploy concluído com sucesso em $(date)"
+                exit 0
+              fi
+              echo "⏳ Aguardando aplicação iniciar... (tentativa $i/6)"
+              sleep 10
+            done
+            echo "❌ Erro: Aplicação não respondeu em tempo hábil"
+            exit 1
