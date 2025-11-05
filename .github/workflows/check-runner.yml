@@ -6,7 +6,7 @@ on:
 jobs:
   diagnose:
     name: Diagnóstico do Runner
-    runs-on: [self-hosted, linux, deploy]
+    runs-on: self-hosted
     
     steps:
       - name: Checkout
