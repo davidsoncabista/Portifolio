@@ -1,0 +1,39 @@
+name: Deploy Portfolio Frontend
+
+on:
+  push:
+    branches:
+      - main # Roda sempre que houver um push para a branch principal
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Deploy via SSH
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: 192.168.0.112 # IP do seu servidor Ubuntu
+        username: root # Usuário que você autorizou a chave SSH
+        key: ${{ secrets.SSH_PRIVATE_KEY }} # O segredo que você criou no GitHub
+        script: |
+          echo "Iniciando deploy em $(date)"
+          
+          # 1. Navega para a pasta do projeto
+          cd /var/www/portfolio-app
+          
+          # 2. Puxa as últimas mudanças do GitHub (Se você comitou a partir do servidor, o pull é rápido)
+          git pull origin main
+          
+          # 3. Instala novas dependências (se houver)
+          npm install
+          
+          # 4. Reconstrói a aplicação Next.js
+          sudo npx next build
+          
+          # 5. Reinicia o processo no PM2 para aplicar as mudanças
+          pm2 restart PortfolioFrontend
+          
+          echo "Deploy concluído com sucesso!"
