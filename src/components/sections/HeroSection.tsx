@@ -7,14 +7,11 @@ import { PlayCircle } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
-import { ContactForm } from '@/components/ContactForm';
 
 export function HeroSection() {
   const videoPlaceholder = PlaceHolderImages.find(p => p.id === 'video-intro-placeholder');
   const pathname = usePathname();
   const lang = pathname.split('/')[1] || 'pt';
-  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
 
   const title = lang === 'pt' ? "Olá, eu sou Davidson Conceição" : "Hi, I'm Davidson Conceição";
   const description = lang === 'pt' 
@@ -44,8 +41,10 @@ export function HeroSection() {
                     {viewWork}
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg" onClick={() => setIsContactFormOpen(true)}>
+                <Button variant="outline" size="lg" asChild>
+                  <a href="mailto:contato@davidson.dev.br">
                     {getInTouch}
+                  </a>
                 </Button>
               </div>
             </div>
@@ -68,7 +67,6 @@ export function HeroSection() {
           </div>
         </div>
       </section>
-      <ContactForm open={isContactFormOpen} onOpenChange={setIsContactFormOpen} lang={lang} />
     </>
   );
 }
