@@ -45,11 +45,9 @@ export async function SkillsSection({ lang }: { lang: string }) {
               </CardHeader>
               <CardContent className="grid gap-6">
                 {skillCategory.list.map((skill) => {
-                  let logoSrc = skill.logo || '';
-                  if (logoSrc.includes('img.icons8.com')) {
-                    logoSrc = logoSrc.replace('/FFFFFF', '');
-                  }
-                  
+                  const logoSrc = skill.logo || '';
+                  const applyInvertFilter = logoSrc.includes('img.icons8.com');
+
                   return (
                     <div key={skill.name} className="grid gap-2">
                       <div className="flex items-center justify-between">
@@ -61,7 +59,7 @@ export async function SkillsSection({ lang }: { lang: string }) {
                               width={20}
                               height={20}
                               className="h-5 w-5 object-contain"
-                              style={skill.logo.includes('img.icons8.com') ? { filter: 'brightness(0) invert(1)' } : {}}
+                              style={applyInvertFilter ? { filter: 'brightness(0) invert(1)' } : {}}
                               unoptimized
                             />
                           )}
