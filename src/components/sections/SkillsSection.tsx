@@ -50,11 +50,12 @@ export async function SkillsSection({ lang }: { lang: string }) {
                       <div className="flex items-center gap-2">
                         {skill.logo && (
                            <Image 
-                              src={skill.logo} 
+                              src={skill.logo.includes('img.icons8.com') ? skill.logo.replace('/FFFFFF', '') : skill.logo}
                               alt={`${skill.name} logo`} 
                               width={20} 
                               height={20}
-                              className="h-5 w-5 object-contain" 
+                              className="h-5 w-5 object-contain"
+                              style={skill.logo.includes('img.icons8.com') ? { filter: 'brightness(0) invert(1)' } : {}}
                               unoptimized
                            />
                         )}
