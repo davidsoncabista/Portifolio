@@ -6,18 +6,15 @@ import { FeaturedProjectsSection } from '@/components/sections/FeaturedProjectsS
 import { Separator } from '@/components/ui/separator';
 
 export default async function Home({ params }: { params: { lang: string } }) {
-  const lang = await (async () => {
-    'use server';
-    return params?.lang || 'pt';
-  })();
+  const lang = params?.lang || 'pt';
   
   return (
     <div className="flex flex-col">
       <HeroSection />
       <div className="container mx-auto px-4">
-        <Separator className="my-12 md:my-24" />
+        <Separator className="my-8 md:my-12" />
         <FeaturedProjectsSection lang={lang} />
-        <Separator className="my-12 md:my-24" />
+        <Separator className="my-8 md:my-12" />
         <ArticlesSection lang={lang} />
         <Separator className="my-12 md:my-24" />
         <SkillsSection lang={lang} />

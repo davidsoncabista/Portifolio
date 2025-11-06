@@ -1,11 +1,12 @@
 
 import type { Metadata } from 'next';
-import '../globals.css';
+import { Inter, Space_Grotesk } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { Inter, Space_Grotesk } from 'next/font/google'
+import '../globals.css';
+import '../output.css';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -33,13 +34,10 @@ const baseMetadata: Metadata = {
 };
 
 export async function generateMetadata({ params }: { params: { lang: string } }) {
-  const lang = await (async () => {
-    'use server';
-    return params?.lang || 'pt';
-  })();
+  const lang = params?.lang || 'pt';
   
   return {
-    title: 'Rodrigo Tem',
+    title: 'davidson portifolio',
     description: lang === 'pt' ? 'Bem vindo ao meu portfólio' : 'Welcome to my portfolio',
   };
 }
@@ -51,10 +49,7 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { lang: string };
 }) {
-  const lang = await (async () => {
-    'use server';
-    return params?.lang || 'pt';
-  })();
+  const lang = params?.lang || 'pt';
   
   return (
     <html lang={lang} className="dark">
