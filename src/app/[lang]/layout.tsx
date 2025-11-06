@@ -32,25 +32,32 @@ const baseMetadata: Metadata = {
   }
 };
 
-export async function generateMetadata({ params: { lang } }: { params: { lang: string } }) {
+export async function generateMetadata({ params }: { params: { lang: string } }) {
+  const lang = await (async () => {
+    'use server';
+    return params?.lang || 'pt';
+  })();
+  
   return {
-    ...baseMetadata,
-    openGraph: {
-      ...baseMetadata.openGraph,
-      locale: lang === 'en' ? 'en_US' : 'pt_BR',
-    }
-  } as Metadata;
+    title: 'Rodrigo Tem',
+    description: lang === 'pt' ? 'Bem vindo ao meu portfólio' : 'Welcome to my portfolio',
+  };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: { lang: string };
 }) {
+  const lang = await (async () => {
+    'use server';
+    return params?.lang || 'pt';
+  })();
+  
   return (
-    <html lang={params.lang ?? 'pt'} className="dark">
+    <html lang={lang} className="dark">
       <body className={cn('antialiased flex flex-col min-h-screen font-body', inter.variable, spaceGrotesk.variable)}>
           <Header />
           <main className="flex-1">{children}</main>

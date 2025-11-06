@@ -5,8 +5,12 @@ import { ArticlesSection } from '@/components/sections/ArticlesSection';
 import { FeaturedProjectsSection } from '@/components/sections/FeaturedProjectsSection';
 import { Separator } from '@/components/ui/separator';
 
-export default function Home({ params }: { params: { lang: string } }) {
-  const lang = params.lang || 'pt';
+export default async function Home({ params }: { params: { lang: string } }) {
+  const lang = await (async () => {
+    'use server';
+    return params?.lang || 'pt';
+  })();
+  
   return (
     <div className="flex flex-col">
       <HeroSection />
