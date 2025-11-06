@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */ // Esta linha é opcional para tipagem
+const path = require('path');
+
+/** @type {import('next').NextConfig} */ // Esta linha é opcional para tipagem
 const nextConfig = {
   /* config options here */
   typescript: {
@@ -43,6 +46,15 @@ const nextConfig = {
         pathname: '/**',
       }
     ],
+  },
+  // Add a webpack alias fallback for environments where TS path mapping isn't picked up
+  webpack: (config) => {
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      '@': path.resolve(__dirname, 'src'),
+    };
+    return config;
   },
 };
 

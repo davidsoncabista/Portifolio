@@ -817,6 +817,11 @@ body {
   margin-bottom: 3rem;
 }
 
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .-ml-4 {
   margin-left: -1rem;
 }
@@ -2669,6 +2674,11 @@ body {
 }
 
 @media (min-width: 768px) {
+  .md\:my-12 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
   .md\:my-24 {
     margin-top: 6rem;
     margin-bottom: 6rem;
@@ -2706,9 +2716,18 @@ body {
     gap: 3rem;
   }
 
+  .md\:gap-8 {
+    gap: 2rem;
+  }
+
   .md\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .md\:py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
   .md\:py-24 {
@@ -2745,13 +2764,13 @@ body {
     grid-template-columns: 1fr 550px;
   }
 
-  .lg\:gap-12 {
-    gap: 3rem;
+  .lg\:gap-8 {
+    gap: 2rem;
   }
 
-  .lg\:py-32 {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+  .lg\:py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 
   .lg\:text-6xl {
@@ -2768,11 +2787,6 @@ body {
 @media (min-width: 1280px) {
   .xl\:grid-cols-\[1fr_650px\] {
     grid-template-columns: 1fr 650px;
-  }
-
-  .xl\:py-48 {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
   }
 
   .xl\:text-6xl\/none {
