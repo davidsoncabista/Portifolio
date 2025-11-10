@@ -8,63 +8,64 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
 
+    steps:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: NEXT_TELEMETRY_DISABLED=1 npm run build
-
-      - name: Deploy (local)
+      - name: Pull, Build, and Deploy
+        # Define o diretório de trabalho para TODOS os comandos deste passo
+        working-directory: /var/www/portfolio-app
         run: |
+          # 1. Parar o script se qualquer comando falhar
           set -e
-          echo "🚀 Deploy iniciando: $(date)"
+          echo "🚀 Deploy iniciando em $(pwd) - $(date)"
 
-          # Assegure que estamos na pasta do projeto
-          cd /var/www/portfolio-app
-
-          # Garantir que o código está sincronizado com a branch
+          # 2. Garantir que o código está sincronizado com a branch
+          echo "🔄 Sincronizando com o repositório..."
           git fetch origin main
           git reset --hard origin/main
 
-          # Instalar dependências (produção)
-          npm ci --production
+          # 3. Instalar dependências (NÃO use --production, o build precisa das devDependencies)
+          echo "📦 Instalando dependências..."
+          npm ci
 
-          # Rodar build 
+          # 4. Rodar o build (Tailwind, etc.)
+          echo "🛠️  Construindo a aplicação..."
           NEXT_TELEMETRY_DISABLED=1 npm run build
 
-          # Instalar PM2 se necessário
-          if ! command -v pm2 &> /dev/null; then
-            echo "Instalando pm2..."
-            sudo npm install -g pm2
-          fi
-
-          # Reiniciar / iniciar a app
-          if pm2 list | grep -q "PortfolioFrontend"; then
-            pm2 reload PortfolioFrontend || pm2 restart PortfolioFrontend
+          # 5. Reiniciar a aplicação com PM2
+          # (Removi a instalação do PM2. É melhor que ele já esteja instalado 
+          # globalmente no seu servidor, para evitar problemas de permissão/sudo)
+          echo "♻️  Reiniciando o serviço PM2..."
+          if pm2 list | grep -q "portfolio-app"; then
+            pm2 reload portfolio-app || pm2 restart portfolio-app
+            echo "✅ Serviço 'portfolio-app' reiniciado."
           else
-            pm2 start npm --name "PortfolioFrontend" -- start
+            echo "▶️  Iniciando novo serviço 'portfolio-app'..."
+            pm2 start npm --name "portfolio-app" -- start
           fi
 
-          # Healthcheck local
+          # 6. Healthcheck local
           echo "🏥 Executando healthcheck..."
           for i in {1..6}; do
+            # Tenta acessar a URL. Se o curl for bem-sucedido (código 0), o app está online.
             if curl -s http://labblamsac.myddns.me:9002/ > /dev/null; then
-              echo "✅ Aplicação está respondendo"
-              exit 0
+              echo "✅ Aplicação está respondendo!"
+              break # Sai do loop
             fi
-            echo "⏳ Aguardando app iniciar ($i/6)"
+            
+            # Se for a última tentativa, falha o deploy
+            if [ $i -eq 6 ]; then
+              echo "❌ Healthcheck falhou após 60 segundos."
+              exit 1 # Falha o passo do workflow
+            fi
+
+            echo "⏳ Aguardando app iniciar ($i/6)..."
             sleep 10
           done
 
-          echo "❌ Healthcheck falhou"
-          exit 1
+          echo "🎉 Deploy concluído com sucesso!"
