@@ -52,8 +52,8 @@ jobs:
           # 6. Healthcheck local
           echo "🏥 Executando healthcheck..."
           for i in {1..6}; do
-            # Tenta acessar a URL. Se o curl for bem-sucedido (código 0), o app está online.
-            if curl -s http://labblamsac.myddns.me:9002/ > /dev/null; then
+            # Tenta acessar a URL localmente. Se o curl for bem-sucedido, o app está online.
+            if curl -s http://localhost:9002/ > /dev/null; then
               echo "✅ Aplicação está respondendo!"
               break # Sai do loop
             fi

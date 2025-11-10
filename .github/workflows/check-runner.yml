@@ -35,15 +35,3 @@ jobs:
           else
             echo "❌ Runner NÃO tem permissão de escrita no diretório do projeto"
           fi
-
-# stop and remove current service (if desired)
-sudo ./svc.sh stop
-sudo ./svc.sh uninstall
-
-# remove config and reconfigure with labels (run in ~/actions-runner)
-./config.sh remove --unattended || true
-./config.sh --url https://github.com/davidsoncabista/Portifolio --token <NEW_TOKEN> --labels "self-hosted,linux,deploy" --unattended
-
-# install/start service again
-sudo ./svc.sh install
-sudo ./svc.sh start
