@@ -28,12 +28,14 @@ const nextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https_cdn.simpleicons.org',
+        protocol: 'https',
+        hostname: 'cdn.simpleicons.org',
         port: '',
         pathname: '/**',
       },
       {
-        protocol: 'https_img.icons8.com',
+        protocol: 'https',
+        hostname: 'img.icons8.com',
         port: '',
         pathname: '/**',
       },
