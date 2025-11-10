@@ -16,8 +16,7 @@ This project is built with the following technologies:
 *   **Language:** [TypeScript](https://www.typescriptlang.org/)
 *   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 *   **UI Components:** [ShadCN/UI](https://ui.shadcn.com/)
-*   **Backend/Database:** [Firebase](https://firebase.google.com/) (Firestore for contact form)
-*   **Generative AI:** [Genkit](https://firebase.google.com/docs/genkit)
+*   **Data Source:** A custom Java API for projects and skills.
 
 ## Getting Started
 
@@ -35,15 +34,7 @@ To run the project locally, follow these steps:
     npm install
     ```
 
-3.  **Set up environment variables:**
-    You will need to create a `.env.local` file in the root of the project and add your Firebase project configuration. You can get these from the Firebase console.
-
-    ```
-    NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
-    NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
-    ```
-
-4.  **Run the development server:**
+3.  **Run the development server:**
     ```bash
     npm run dev
     ```
