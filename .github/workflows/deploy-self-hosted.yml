@@ -58,7 +58,7 @@ jobs:
           # Healthcheck local
           echo "🏥 Executando healthcheck..."
           for i in {1..6}; do
-            if curl -s http://localhost:9002/ > /dev/null; then
+            if curl -s http://labblamsac.myddns.me:9002/ > /dev/null; then
               echo "✅ Aplicação está respondendo"
               exit 0
             fi
