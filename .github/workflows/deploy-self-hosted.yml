@@ -1,0 +1,71 @@
+name: Deploy (self-hosted)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Pull, Build, and Deploy
+        # Define o diretório de trabalho para TODOS os comandos deste passo
+        working-directory: /var/www/portfolio-app
+        run: |
+          # 1. Parar o script se qualquer comando falhar
+          set -e
+          echo "🚀 Deploy iniciando em $(pwd) - $(date)"
+
+          # 2. Garantir que o código está sincronizado com a branch
+          echo "🔄 Sincronizando com o repositório..."
+          git fetch origin main
+          git reset --hard origin/main
+
+          # 3. Instalar dependências (NÃO use --production, o build precisa das devDependencies)
+          echo "📦 Instalando dependências..."
+          npm ci
+
+          # 4. Rodar o build (Tailwind, etc.)
+          echo "🛠️  Construindo a aplicação..."
+          NEXT_TELEMETRY_DISABLED=1 npm run build
+
+          # 5. Reiniciar a aplicação com PM2
+          # (Removi a instalação do PM2. É melhor que ele já esteja instalado 
+          # globalmente no seu servidor, para evitar problemas de permissão/sudo)
+          echo "♻️  Reiniciando o serviço PM2..."
+          if pm2 list | grep -q "portfolio-app"; then
+            pm2 reload portfolio-app || pm2 restart portfolio-app
+            echo "✅ Serviço 'portfolio-app' reiniciado."
+          else
+            echo "▶️  Iniciando novo serviço 'portfolio-app'..."
+            pm2 start npm --name "portfolio-app" -- start
+          fi
+
+          # 6. Healthcheck local
+          echo "🏥 Executando healthcheck..."
+          for i in {1..6}; do
+            # Tenta acessar a URL. Se o curl for bem-sucedido (código 0), o app está online.
+            if curl -s http://labblamsac.myddns.me:9002/ > /dev/null; then
+              echo "✅ Aplicação está respondendo!"
+              break # Sai do loop
+            fi
+            
+            # Se for a última tentativa, falha o deploy
+            if [ $i -eq 6 ]; then
+              echo "❌ Healthcheck falhou após 60 segundos."
+              exit 1 # Falha o passo do workflow
+            fi
+
+            echo "⏳ Aguardando app iniciar ($i/6)..."
+            sleep 10
+          done
+
+          echo "🎉 Deploy concluído com sucesso!"
