@@ -1,6 +1,5 @@
-import type {NextConfig} from 'next';
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   /* config options here */
   typescript: {
     ignoreBuildErrors: true,
@@ -29,14 +28,12 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
-        hostname: 'cdn.simpleicons.org',
+        protocol: 'https_cdn.simpleicons.org',
         port: '',
         pathname: '/**',
       },
       {
-        protocol: 'https',
-        hostname: 'img.icons8.com',
+        protocol: 'https_img.icons8.com',
         port: '',
         pathname: '/**',
       },
@@ -56,4 +53,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
