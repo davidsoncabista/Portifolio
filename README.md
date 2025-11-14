@@ -10,7 +10,7 @@ This portfolio is a modern, responsive, and internationalized (i18n) web applica
 
 ## Tech Stack
 
-This project is built with the following technologies:
+This project is built with the following technologies:.
 
 *   **Framework:** [Next.js](https://nextjs.org/) (with App Router)
 *   **Language:** [TypeScript](https://www.typescriptlang.org/)
