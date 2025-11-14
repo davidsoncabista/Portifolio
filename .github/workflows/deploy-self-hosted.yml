@@ -3,48 +3,52 @@ name: Deploy (self-hosted)
 on:
   push:
     branches: [ main ]
+  # Permite que você execute o deploy manualmente pela interface do GitHub
   workflow_dispatch:
 
 jobs:
   deploy:
+    # Usa o Runner auto-hospedado (no seu LXC)
     runs-on: self-hosted
 
     steps:
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
+      # O actions/setup-node@v4 foi removido para evitar o erro de 'lock file not found'
+      # e para usar a versão do Node que já está instalada no seu LXC.
 
       - name: Pull, Build, and Deploy
-        # Define o diretório de trabalho para TODOS os comandos deste passo
+        # Define o diretório de trabalho onde o código está (seu app Next.js)
         working-directory: /var/www/
         run: |
           # 1. Parar o script se qualquer comando falhar
           set -e
-          echo "🚀 Deploy iniciando em $(pwd) - $(date)"
+          echo "� Deploy iniciando em $(pwd) - $(date)"
 
-          # 2. Garantir que o código está sincronizado com a branch
-          echo "🔄 Sincronizando com o repositório..."
+          # 2. Sincroniza o código com a branch principal
+          echo "� Sincronizando com o repositório..."
+          # O fetch e reset é necessário para garantir que o diretório /var/www/ 
+          # esteja limpo e com a versão exata do GitHub
           git fetch origin main
           git reset --hard origin/main
 
-          # 3. Instalar dependências (NÃO use --production, o build precisa das devDependencies)
-          echo "📦 Instalando dependências..."
-          npm ci
+          # 3. Instalar dependências (usando 'npm install' pois o 'package-lock.json' não está no Git)
+          echo "� Instalando dependências..."
+          npm install
 
-          # 4. Rodar o build (Tailwind, etc.)
-          echo "🛠️  Construindo a aplicação..."
+          # 4. Rodar o build (Next.js)
+          echo "�️ Construindo a aplicação..."
+          # Desabilita telemetria do Next.js durante o build
           NEXT_TELEMETRY_DISABLED=1 npm run build
 
           # 5. Reiniciar a aplicação com PM2
-          echo "♻️  Reiniciando o serviço PM2..."
+          echo "♻️ Reiniciando o serviço PM2..."
+          # Tenta recarregar o PM2 existente, ou o reinicia, ou inicia um novo se não existir
           if pm2 list | grep -q "portfolio-app"; then
             pm2 reload portfolio-app || pm2 restart portfolio-app
             echo "✅ Serviço 'portfolio-app' reiniciado."
           else
-            echo "▶️  Iniciando novo serviço 'portfolio-app'..."
+            echo "▶️ Iniciando novo serviço 'portfolio-app'..."
+            # Inicia o app usando 'npm start' via PM2
             pm2 start npm --name "portfolio-app" -- start
           fi
           
-          echo "🎉 Deploy concluído com sucesso!"
+          echo "� Deploy concluído com sucesso!"
