@@ -18,7 +18,7 @@ jobs:
 
       - name: Pull, Build, and Deploy
         # Define o diretório de trabalho para TODOS os comandos deste passo
-        working-directory: /var/www/portfolio-app
+        working-directory: /var/www/
         run: |
           # 1. Parar o script se qualquer comando falhar
           set -e
