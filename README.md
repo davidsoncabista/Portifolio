@@ -18,6 +18,15 @@ This project is built with the following technologies:.
 *   **UI Components:** [ShadCN/UI](https://ui.shadcn.com/)
 *   **Data Source:** A custom Java API for projects and skills.
 
+### 📸 Galeria e Mídia (Novo)
+
+Integração com Object Storage (MinIO) para servir ativos de mídia dinamicamente.
+
+* **`GET /api/gallery`**:
+    * **Descrição:** Lista as URLs públicas de todas as imagens armazenadas no bucket `portfolio-image`.
+    * **Resposta:** JSON Array de Strings `["https://s3.../img1.jpg", "https://s3.../img2.jpg"]`.
+    * **Uso:** Consumido pelo Frontend para renderizar a seção de fotos/certificados.
+
 ## Getting Started
 
 To run the project locally, follow these steps:
