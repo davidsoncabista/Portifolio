@@ -3,6 +3,7 @@ import { HeroSection } from '@/components/sections/HeroSection';
 import { SkillsSection } from '@/components/sections/SkillsSection';
 import { ArticlesSection } from '@/components/sections/ArticlesSection';
 import { FeaturedProjectsSection } from '@/components/sections/FeaturedProjectsSection';
+import { GallerySection } from '@/components/sections/GallerySection';
 import { Separator } from '@/components/ui/separator';
 
 export default async function Home({ params }: { params: { lang: string } }) {
@@ -12,6 +13,8 @@ export default async function Home({ params }: { params: { lang: string } }) {
     <div className="flex flex-col">
       <HeroSection />
       <div className="container mx-auto px-4">
+        <Separator className="my-8 md:my-12" />
+        <GallerySection lang={lang} />
         <Separator className="my-8 md:my-12" />
         <FeaturedProjectsSection lang={lang} />
         <Separator className="my-8 md:my-12" />

@@ -11,6 +11,7 @@ export type Project = {
   technologies: string[];
   demoUrl: string;
   githubUrl: string;
+  imageUrl?: string;
 };
 
 export type Skill = {
@@ -81,6 +82,27 @@ export async function getSkills(lang: string): Promise<SkillCategory[]> {
   }
 }
 
+// Fetch Gallery Images from the API
+export async function getGalleryImages(): Promise<string[]> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/gallery`, { next: { revalidate: 3600 } });
+    if (!response.ok) {
+      console.error("Failed to fetch gallery images:", response.statusText);
+      return [];
+    }
+    const imageUrls = await response.json();
+    // Assuming the API returns an array of strings
+    if (Array.isArray(imageUrls) && imageUrls.every(item => typeof item === 'string')) {
+      return imageUrls;
+    }
+    console.error("Fetched gallery data is not an array of strings.");
+    return [];
+  } catch (error) {
+    console.error("Error fetching gallery images:", error);
+    return []; // Return empty array as fallback
+  }
+}
+
 
 // Static data that is not in the API
 export const articles = {
@@ -126,13 +148,13 @@ export const articles = {
     {
       title: "Do Código ao Cabo: Uma Jornada de Redescoberta",
       description: "Um artigo sobre a jornada para unir o desenvolvimento de software moderno à infraestrutura de hardware crítica, e por que essa união é essencial para o futuro da tecnologia.",
-      url: "https://www.linkedin.com/pulse/do-c%25C3%25B3digo-ao-cabo-uma-jornada-de-redescoberta-da-davidson-s-concei%25C3%25A7%25C3%25A3o-yo1mf/",
+      url: "https://www.linkedin.com/pulse/do-c%25C3%25B3digo-ao-cabo-uma-jornada-de-redescoberta-da-davidson-s-concei%25C3%25A7%25C3%a3o-yo1mf/",
       publicationDate: "2024-07-20",
     },
     {
       title: "Meu Primeiro Bug: Como uma 'Gambiarra' de R$50 me Ensinou Sobre Resolução de Problemas",
       description: "Uma história sobre uma solução criativa do início da minha carreira e a lição que ela me ensinou sobre pensar fora da caixa para resolver problemas complexos.",
-      url: "https://www.linkedin.com/pulse/meu-primeiro-bug-como-uma-gambiarra-de-r50-me-ensinou-s-concei%25C3%25A7%25C3%25A3o-3ewaf/",
+      url: "https://www.linkedin.com/pulse/meu-primeiro-bug-como-uma-gambiarra-de-r50-me-ensinou-s-concei%25C3%25A7%25C3%A3o-3ewaf/",
       publicationDate: "2024-07-15",
     }
   ]
