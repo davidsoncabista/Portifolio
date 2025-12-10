@@ -6,6 +6,7 @@ const API_BASE_URL = 'https://davidson-portfolio-api.onrender.com';
 
 // Types to match the API response
 export type Project = {
+  slug: string;
   title: string;
   description: string;
   status: string;
@@ -169,3 +170,5 @@ export const socialLinks = [
     { name: "Instagram", icon: Instagram, url: "https://instagram.com/davidson.dev.br" },
     { name: 'Youtube', icon: Youtube, url: 'https://www.youtube.com/@davidson.developer' },
 ];
+
+    

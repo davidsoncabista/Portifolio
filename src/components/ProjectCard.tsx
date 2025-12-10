@@ -1,9 +1,13 @@
 
+'use client';
+
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github, GalleryHorizontal } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import type { Project } from '@/lib/data';
+import { ProjectGallery } from './ProjectGallery';
 
 interface ProjectCardProps {
   project: Project;
@@ -43,9 +47,21 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </Button>
         )}
         
-        <Button variant="secondary" size="sm" disabled={!project.hasGallery}>
-            <GalleryHorizontal className="mr-2 h-4 w-4" /> Galeria
-        </Button>
+        {project.hasGallery && (
+            <Dialog>
+                <DialogTrigger asChild>
+                    <Button variant="secondary" size="sm">
+                        <GalleryHorizontal className="mr-2 h-4 w-4" /> Galeria
+                    </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl">
+                    <DialogHeader>
+                        <DialogTitle>{project.title} - Galeria</DialogTitle>
+                    </DialogHeader>
+                    <ProjectGallery projectSlug={project.slug} />
+                </DialogContent>
+            </Dialog>
+        )}
         
         {project.demoUrl && (
             <Button variant="default" size="sm" asChild>
@@ -58,3 +74,5 @@ export function ProjectCard({ project }: ProjectCardProps) {
     </Card>
   );
 }
+
+    
