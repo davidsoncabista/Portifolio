@@ -1,8 +1,15 @@
+
 import { socialLinks } from '@/lib/data';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { Shield } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function Footer() {
+  const pathname = usePathname();
+  const lang = pathname?.split('/')[1] || 'pt';
+
   return (
     <footer className="bg-card">
       <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-8 sm:flex-row">
@@ -20,6 +27,11 @@ export function Footer() {
               </a>
             </Button>
           ))}
+           <Button variant="ghost" size="icon" asChild>
+              <Link href={`/${lang}/login`} aria-label="Admin Login">
+                <Shield className="h-4 w-4 text-muted-foreground/50 hover:text-primary transition-colors" />
+              </Link>
+            </Button>
         </div>
       </div>
     </footer>

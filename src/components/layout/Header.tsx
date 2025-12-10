@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -37,6 +38,12 @@ export function Header() {
     } else {
       pathSegments.unshift(newLang);
     }
+    
+    // Make sure to not create routes like /en/login but keep them as /login
+    if (pathSegments.length > 1 && pathSegments[1] === 'login') {
+       return `/${currentLang}/login`;
+    }
+
     return '/' + pathSegments.join('/');
   }
 
