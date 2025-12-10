@@ -1,16 +1,9 @@
+
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github } from 'lucide-react';
-
-type Project = {
-  title: string;
-  description: string;
-  status: string;
-  technologies: string[];
-  demoUrl: string;
-  githubUrl: string;
-};
+import { ExternalLink, Github, GalleryHorizontal } from 'lucide-react';
+import type { Project } from '@/lib/data';
 
 interface ProjectCardProps {
   project: Project;
@@ -42,16 +35,25 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </CardContent>
       <CardFooter className="flex justify-end gap-2">
-        <Button variant="ghost" size="sm" asChild>
-          <a href={project.githubUrl} target="_blank" rel="noreferrer">
-            <Github className="mr-2 h-4 w-4" /> Code
-          </a>
+        {project.githubUrl && (
+            <Button variant="ghost" size="sm" asChild>
+                <a href={project.githubUrl} target="_blank" rel="noreferrer">
+                    <Github className="mr-2 h-4 w-4" /> Code
+                </a>
+            </Button>
+        )}
+        
+        <Button variant="secondary" size="sm" disabled={!project.hasGallery}>
+            <GalleryHorizontal className="mr-2 h-4 w-4" /> Galeria
         </Button>
-        <Button variant="default" size="sm" asChild>
-          <a href={project.demoUrl} target="_blank" rel="noreferrer">
-            <ExternalLink className="mr-2 h-4 w-4" /> Demo
-          </a>
-        </Button>
+        
+        {project.demoUrl && (
+            <Button variant="default" size="sm" asChild>
+                <a href={project.demoUrl} target="_blank" rel="noreferrer">
+                    <ExternalLink className="mr-2 h-4 w-4" /> Demo
+                </a>
+            </Button>
+        )}
       </CardFooter>
     </Card>
   );

@@ -1,3 +1,4 @@
+
 import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -12,6 +13,7 @@ export type Project = {
   demoUrl: string;
   githubUrl: string;
   imageUrl?: string;
+  hasGallery?: boolean;
 };
 
 export type Skill = {
