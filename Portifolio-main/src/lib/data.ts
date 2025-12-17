@@ -1,9 +1,6 @@
 import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
-// Base URL for the API antigalmente hospedada no Render
-//const API_BASE_URL = 'https://davidson-portfolio-api.onrender.com';
-
 //base URL para a API self-hosted
 const API_BASE_URL = 'http://api.davidson.dev.br';
 
