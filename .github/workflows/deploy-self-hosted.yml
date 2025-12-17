@@ -1,0 +1,57 @@
+
+name: Deploy (self-hosted)
+
+on:
+  push:
+    branches: [ main ]
+  # Permite que você execute o deploy manualmente pela interface do GitHub
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    # Usa o Runner auto-hospedado (no seu LXC)
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull, Build, and Deploy
+        # Define o diretório de trabalho onde o código está (seu app Next.js)
+        working-directory: /var/www/
+        run: |
+          # 1. Parar o script se qualquer comando falhar
+          set -e
+          echo "🚀 Deploy iniciando em $(pwd) - $(date)"
+
+          # 2. Sincroniza o código com a branch principal
+          echo "🔄 Sincronizando com o repositório..."
+          # O fetch e reset é necessário para garantir que o diretório /var/www/ 
+          # esteja limpo e com a versão exata do GitHub
+          git fetch origin main
+          git reset --hard origin/main
+
+          # 3. Limpeza do ambiente (Clean Install)
+          echo "🧹 Limpando builds e dependências antigas..."
+          sudo rm -rf node_modules .next package-lock.json
+
+          # 4. Instalar dependências (usando 'npm install' pois o 'package-lock.json' não está no Git)
+          echo "📦 Instalando dependências..."
+          npm install
+
+          # 5. Rodar o build (Next.js)
+          echo "🛠️ Construindo a aplicação..."
+          # Desabilita telemetria do Next.js durante o build
+          NEXT_TELEMETRY_DISABLED=1 npm run build
+
+          # 6. Reiniciar a aplicação com PM2
+          echo "♻️ Reiniciando o serviço PM2..."
+          # Tenta recarregar o PM2 existente, ou o reinicia, ou inicia um novo se não existir
+          if pm2 list | grep -q "portfolio-app"; then
+            pm2 reload portfolio-app || pm2 restart portfolio-app
+            echo "✅ Serviço 'portfolio-app' reiniciado."
+          else
+            echo "▶️ Iniciando novo serviço 'portfolio-app'..."
+            # Inicia o app usando 'npm start' via PM2
+            pm2 start npm --name "portfolio-app" -- start
+          fi
+          
+          echo "🎉 Deploy concluído com sucesso!"
+
