@@ -1,4 +1,4 @@
-import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl } from 'lucide-react';
+import { Github, Code2, ServerCog, Linkedin, Instagram, Youtube, RadioTower } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 //base URL para a API self-hosted
@@ -38,10 +38,10 @@ export type Article = {
 const ICONS: { [key: string]: LucideIcon } = {
   "Critical Infrastructure & DevOps": ServerCog,
   "Full-Stack Development": Code2,
-  "Telecommunications & Networks": TowerControl,
+  "Telecommunications & Networks": RadioTower,
   "Infraestrutura Crítica": ServerCog,
   "Desenvolvimento Full-Stack": Code2,
-  "Telecomunicações": TowerControl,
+  "Telecomunicações": RadioTower,
 };
 
 
