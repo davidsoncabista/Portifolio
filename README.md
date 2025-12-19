@@ -2,7 +2,7 @@
 
 This repository contains the source code for my personal portfolio website, built to showcase my skills and projects as an Infrastructure Solutions Architect and Full-Stack Developer.
 
-The live version can be accessed at [davidson.dev.br](https://davidson.dev.br).
+The live version can be accessed at [portfolio.davidson.dev.br](https://portfolio.davidson.dev.br).
 
 ## About This Project
 
