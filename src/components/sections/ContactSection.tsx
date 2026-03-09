@@ -34,7 +34,7 @@ export function ContactSection({ lang }: { lang: string }) {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    
+    //agora para cicd
     // Honeypot: Se este campo estiver preenchido, é um bot
     if (formData.get('website_url')) return;
 
