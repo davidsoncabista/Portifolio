@@ -12,5 +12,4 @@ jobs:
     steps:
       - name: Executar Script de Deploy Local
         run: |
-          # Chamamos o caminho absoluto do script usando sudo
-          sudo /var/www/deploy.sh
+          /var/www/deploy.sh
