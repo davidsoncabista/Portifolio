@@ -1,5 +1,4 @@
-
-import { articles as articlesData } from '@/lib/data';
+import { getArticles } from '@/lib/data'; // Busca a nova função de fetch
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BookText } from 'lucide-react';
@@ -7,15 +6,20 @@ import Link from 'next/link';
 import { format } from 'date-fns';
 import { enUS, ptBR } from 'date-fns/locale';
 
-export function ArticlesSection({ lang }: { lang: string }) {
-  const articles = articlesData[lang as keyof typeof articlesData] || [];
+// O componente agora é async para aguardar a resposta da API Java
+export async function ArticlesSection({ lang }: { lang: string }) {
+  // Busca os artigos dinamicamente do seu backend Java (IP 192.168.0.70)
+  const articles = await getArticles(lang); 
+  
   const locale = lang === 'pt' ? ptBR : enUS;
-
   const title = lang === 'pt' ? 'Artigos em Destaque' : 'Featured Articles';
   const description = lang === 'pt'
     ? 'Aqui estão alguns artigos e pensamentos que compartilhei no LinkedIn.'
     : "Here are some articles and thoughts I've shared on LinkedIn.";
   const readMoreText = lang === 'pt' ? 'Ler no LinkedIn' : 'Read on LinkedIn';
+
+  // Caso não existam artigos retornados pela API, a seção não é renderizada
+  if (!articles || articles.length === 0) return null;
 
   return (
     <section id="articles" className="w-full py-12 md:py-24">
@@ -42,6 +46,7 @@ export function ArticlesSection({ lang }: { lang: string }) {
                   </CardHeader>
                   <CardContent className="p-0 mt-4">
                      <p className="text-sm text-muted-foreground">
+                      {/* Formata a data vinda do banco de dados Java/MariaDB */}
                       {format(new Date(article.publicationDate), "PPP", { locale })}
                     </p>
                   </CardContent>
