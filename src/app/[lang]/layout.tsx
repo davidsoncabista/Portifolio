@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import '../output.css';
-
+//bora bora
 const inter = Inter({ 
   subsets: ['latin'],
   variable: '--font-inter',
