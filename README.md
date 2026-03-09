@@ -60,3 +60,34 @@ pct exec 117 -- docker exec -u root portfolio-frontend bash -c "rm -rf .next && 
 
 Bash
 pct exec 117 -- docker restart portfolio-frontend
+
+## Envio de mensagens ao Telegram (Contato)
+
+Adicionei uma rota API local em `src/app/api/contact/route.ts` que encaminha o formulário de contato diretamente para a API do Bot do Telegram. Isso evita problemas de CORS e chamadas a um backend externo do cliente.
+
+Configuração necessária (não comitar): crie um arquivo `.env.local` na raiz do projeto Next.js com as variáveis abaixo:
+
+```
+TELEGRAM_BOT_TOKEN=seu_bot_token_aqui
+TELEGRAM_CHAT_ID=seu_chat_id_aqui
+```
+
+Observações:
+- Se suas variáveis estiverem nomeadas no estilo do backend Spring (ex.: `telegram.bot.token` ou `telegram.chat.id`), a rota API também tenta fazer fallback nesses nomes, mas é mais simples copiar os valores para `TELEGRAM_BOT_TOKEN` e `TELEGRAM_CHAT_ID`.
+- Reinicie o servidor Next.js após adicionar/atualizar o `.env.local`.
+
+Como testar localmente:
+
+1. Inicie o servidor de desenvolvimento:
+```powershell
+npm run dev
+```
+2. Teste a rota diretamente (substitua a porta se usar outra):
+```bash
+curl -X POST http://localhost:3000/api/contact \
+    -H "Content-Type: application/json" \
+    -d '{"name":"Teste","email":"teste@example.com","message":"mensagem de teste"}'
+```
+3. Ou use a interface: abra a página, clique em `Entrar em contato`, preencha o formulário e envie; verifique o painel Network e os logs do servidor para mensagens de erro.
+
+Dica: você executou `npm rum dev` — o comando correto é `npm run dev`.
