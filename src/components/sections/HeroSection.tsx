@@ -42,7 +42,7 @@ export function HeroSection() {
                   </Link>
                 </Button>
                 
-                {/* O Modal (ContactSection) substitui o antigo botão de mailto */}
+                {/* O Modal (ContactSection) substitui o antigo botão de mailto agora e via telegran :? */}
                 <ContactSection lang={lang} />
               </div>
 
