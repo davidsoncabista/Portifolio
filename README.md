@@ -49,3 +49,14 @@ To run the project locally, follow these steps:
     ```
 
 Open [http://localhost:9002](http://localhost:9002) in your browser to see the result.
+
+pct exec 117 -- docker exec -u root portfolio-frontend bash -c "npm run build"
+
+1. Limpar o cache e fazer o Build (Mestre):
+
+Bash
+pct exec 117 -- docker exec -u root portfolio-frontend bash -c "rm -rf .next && npm run build"
+2. Reiniciar o container para aplicar:
+
+Bash
+pct exec 117 -- docker restart portfolio-frontend

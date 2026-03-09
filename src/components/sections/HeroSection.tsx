@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { PlayCircle } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { ContactSection } from './ContactSection';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -18,8 +19,6 @@ export function HeroSection() {
     ? "Troubleshooting de Infraestrutura e Desenvolvedor Full-Stack. Eu construo soluções robustas, escaláveis e eficientes que dão vida a ideias."
     : "Infrastructure Troubleshooting and Full-Stack Developer. I build robust, scalable, and efficient solutions that bring ideas to life.";
   const viewWork = lang === 'pt' ? "Ver meu trabalho" : "View My Work";
-  const getInTouch = lang === 'pt' ? "Entrar em contato" : "Get in Touch";
-
 
   return (
     <>
@@ -35,18 +34,18 @@ export function HeroSection() {
                   {description}
                 </p>
               </div>
+              
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
                   <Link href={`/${lang}/projects`}>
                     {viewWork}
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href="mailto:contato@davidson.dev.br">
-                    {getInTouch}
-                  </a>
-                </Button>
+                
+                {/* O Modal (ContactSection) substitui o antigo botão de mailto */}
+                <ContactSection lang={lang} />
               </div>
+
             </div>
             <Card className="relative group overflow-hidden rounded-xl">
               {videoPlaceholder && (
