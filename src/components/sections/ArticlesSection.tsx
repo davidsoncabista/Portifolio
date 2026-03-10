@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { BookText } from 'lucide-react';
 import Link from 'next/link';
-import { format } from 'date-fns';
+import { format, parseISO, isValid } from 'date-fns';
 import { enUS, ptBR } from 'date-fns/locale';
 
 // O componente agora é async para aguardar a resposta da API Java
@@ -45,9 +45,28 @@ export async function ArticlesSection({ lang }: { lang: string }) {
                     <CardDescription>{article.description}</CardDescription>
                   </CardHeader>
                   <CardContent className="p-0 mt-4">
-                     <p className="text-sm text-muted-foreground">
-                      {/* Formata a data vinda do banco de dados Java/MariaDB */}
-                      {format(new Date(article.publicationDate), "PPP", { locale })}
+                    <p className="text-sm text-muted-foreground">
+                      {/* Formata a data vinda do banco de dados Java/MariaDB com validação */}
+                      {(() => {
+                        const raw = article.publicationDate;
+                        const fallback = lang === 'pt' ? 'Data indisponível' : 'Date unavailable';
+                        if (!raw) return fallback;
+
+                        // Tenta parse ISO primeiro, depois Date constructor
+                        let d: Date;
+                        try {
+                          d = typeof raw === 'string' ? parseISO(raw) : new Date(raw as any);
+                        } catch (e) {
+                          d = new Date(raw as any);
+                        }
+
+                        if (!isValid(d)) return fallback;
+                        try {
+                          return format(d, 'PPP', { locale });
+                        } catch (e) {
+                          return fallback;
+                        }
+                      })()}
                     </p>
                   </CardContent>
                 </div>
