@@ -70,11 +70,17 @@ export async function ArticlesSection({ lang }: { lang: string }) {
                     </p>
                   </CardContent>
                 </div>
-                <Button asChild variant="outline">
-                  <Link href={article.url} target="_blank" rel="noopener noreferrer">
+                {article.url ? (
+                  <Button asChild variant="outline">
+                    <Link href={article.url} target="_blank" rel="noopener noreferrer">
+                      {readMoreText}
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button variant="outline" disabled>
                     {readMoreText}
-                  </Link>
-                </Button>
+                  </Button>
+                )}
               </div>
             </Card>
           ))}
