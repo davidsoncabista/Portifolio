@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+const apiHost = process.env.NEXT_PUBLIC_API_HOST || process.env.NEXT_PUBLIC_API_BASE_URL || '192.168.0.70';
+const apiPort = process.env.NEXT_PUBLIC_API_PORT || '8080';
+
 const nextConfig = {
   typescript: { ignoreBuildErrors: true },
   eslint: { ignoreDuringBuilds: true },
@@ -10,7 +13,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'picsum.photos', pathname: '/**' },
       { protocol: 'https', hostname: 'cdn.simpleicons.org', pathname: '/**' },
       { protocol: 'https', hostname: 'img.icons8.com', pathname: '/**' },
-      { protocol: 'http', hostname: '192.168.0.70', port: '8080', pathname: '/**' },
+      { protocol: 'http', hostname: apiHost.replace(/^https?:\/\//, ''), port: apiPort, pathname: '/**' },
     ],
   },
 };

@@ -11,7 +11,7 @@ interface ProjectGalleryProps {
   projectSlug: string;
 }
 
-const API_BASE_URL = 'https://davidson-portfolio-api.onrender.com';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://davidson-portfolio-api.onrender.com';
 
 async function getProjectImages(slug: string): Promise<string[]> {
     try {

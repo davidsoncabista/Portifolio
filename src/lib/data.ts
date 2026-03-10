@@ -1,8 +1,8 @@
 import { Github, Code2, ServerCog, BrainCircuit, Linkedin, Instagram, Youtube, TowerControl } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
-// URL do seu novo Backend Java (IP .70 porta 8080)
-const API_BASE_URL = 'http://192.168.0.70:8080';
+// API base URL (configurável via env)
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.API_BASE_URL || 'http://192.168.0.70:8080';
 
 export type Project = {
   slug: string;
