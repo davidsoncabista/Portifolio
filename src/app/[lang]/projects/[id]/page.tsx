@@ -9,7 +9,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const { lang, id } = await params; 
   const projects = await getProjects(lang);
   
-  // Como o ID pode ser string ou number, comparamos convertendo ambos para string
+  // Busca comparando strings para evitar erro de tipo number/string
   const project = projects.find((p: any) => p.id.toString() === id);
 
   if (!project) return notFound();
@@ -30,7 +30,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             {project.imageUrl ? (
               <img src={project.imageUrl} alt={project.title} className="w-full h-auto object-cover" />
             ) : (
-              <div className="flex aspect-video items-center justify-center bg-zinc-800 text-zinc-500">Sem Imagem</div>
+              <div className="flex aspect-video items-center justify-center bg-zinc-800 text-zinc-500">
+                Sem Imagem
+              </div>
             )}
           </div>
 

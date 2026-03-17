@@ -42,13 +42,13 @@ export async function getProjects(lang: string = 'pt'): Promise<Project[]> {
     if (!response.ok) return [];
     const data = await response.json();
     
-    // MUDANÇA AQUI: Se o ID vier nulo do Java, geramos um temporário para o site não sumir
+    // Se o ID for nulo, gera um temporário para não sumir do site
     return data.map((p: any, index: number) => ({
       ...p,
       id: p.id || (999 + index) 
     }));
   } catch (error) {
-    console.error("Erro ao buscar projetos:", error);
+    console.error("Erro Projetos:", error);
     return [];
   }
 }
@@ -72,6 +72,7 @@ export async function getSkills(lang: string = 'pt'): Promise<SkillCategory[]> {
       list,
     }));
   } catch (error) {
+    console.error("Erro Skills:", error);
     return [];
   }
 }
@@ -79,7 +80,9 @@ export async function getSkills(lang: string = 'pt'): Promise<SkillCategory[]> {
 export async function getArticles(lang: string = 'pt'): Promise<any[]> {
   try {
     const response = await fetch(`${API_BASE_URL}/admin/api/articles`, { cache: 'no-store' });
-    return response.ok ? await response.json() : [];
+    if (!response.ok) return [];
+    const data = await response.json();
+    return data.filter((a: any) => a.id !== null);
   } catch (error) {
     return [];
   }
