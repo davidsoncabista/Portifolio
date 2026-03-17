@@ -5,13 +5,14 @@ import { Github, ExternalLink, ArrowLeft, Calendar, Tag } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export default async function ProjectDetailPage({ params }: { params: { lang: string, id: string } }) {
-  const projects = await getProjects(params.lang);
-  // Procuramos o projeto pelo ID que veio na URL
-  const project = projects.find((p: any) => p.id.toString() === params.id);
+export default async function ProjectDetailPage({ params }: { params: Promise<{ lang: string, id: string }> }) {
+  // Aque aguardamos os parâmetros chegarem
+  const { lang, id } = await params; 
+  
+  const projects = await getProjects(lang);
+  const project = projects.find((p: any) => p.id.toString() === id);
 
-  if (!project) {
-    return notFound();
+  if (!project) return notFound();
   }
 
   return (

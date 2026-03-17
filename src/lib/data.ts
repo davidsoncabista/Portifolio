@@ -99,6 +99,20 @@ export async function getArticles(lang: string = 'pt'): Promise<Article[]> {
   }
 }
 
+export async function getGalleryImages(): Promise<string[]> {
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://192.168.0.70:8080';
+  try {
+    // Ajuste o endpoint se necessário, mas por enquanto vamos manter o padrão
+    const response = await fetch(`${apiBaseUrl}/api/gallery`, { 
+      cache: 'no-store' 
+    });
+    return response.ok ? await response.json() : [];
+  } catch (error) {
+    console.error("Erro ao buscar galeria:", error);
+    return [];
+  }
+}
+
 export const socialLinks = [
     { name: 'GitHub', icon: Github, url: 'https://github.com/davidsoncabista/Portifolio' },
     { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com/in/davidsonsconceicao' },
