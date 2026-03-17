@@ -14,11 +14,18 @@ export type Project = {
   imageUrl?: string;
 };
 
+export type Skill = {
+  name: string;
+  proficiency: number;
+  logo: string;
+  category: string;
+};
+
 export type SkillCategory = {
   category: string;
   icon: LucideIcon;
-  list: any[];
-}
+  list: Skill[];
+};
 
 export type Article = {
   id: number;
@@ -42,10 +49,33 @@ export async function getProjects(lang: string = 'pt'): Promise<Project[]> {
     const response = await fetch(`${API_BASE_URL}/admin/api/projects`, { cache: 'no-store' });
     if (!response.ok) return [];
     const data = await response.json();
-    // FILTRO CRÍTICO: Remove projetos sem ID para não quebrar o React
     return data.filter((p: any) => p.id !== null && p.id !== undefined);
   } catch (error) {
-    console.error("Erro ao buscar projetos:", error);
+    console.error("Erro Projetos:", error);
+    return [];
+  }
+}
+
+export async function getSkills(lang: string = 'pt'): Promise<SkillCategory[]> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/skills`, { cache: 'no-store' });
+    if (!response.ok) return [];
+    const skills: Skill[] = await response.json();
+    
+    const skillsByCategory = skills.reduce((acc, skill) => {
+      const { category } = skill;
+      if (!acc[category]) acc[category] = [];
+      acc[category].push(skill);
+      return acc;
+    }, {} as { [key: string]: Skill[] });
+
+    return Object.entries(skillsByCategory).map(([category, list]) => ({
+      category,
+      icon: ICONS[category] || ServerCog,
+      list,
+    }));
+  } catch (error) {
+    console.error("Erro Skills:", error);
     return [];
   }
 }
@@ -57,6 +87,7 @@ export async function getArticles(lang: string = 'pt'): Promise<Article[]> {
     const data = await response.json();
     return data.filter((a: any) => a.id !== null);
   } catch (error) {
+    console.error("Erro Artigos:", error);
     return [];
   }
 }
@@ -66,6 +97,7 @@ export async function getGalleryImages(): Promise<string[]> {
     const response = await fetch(`${API_BASE_URL}/api/gallery`, { cache: 'no-store' });
     return response.ok ? await response.json() : [];
   } catch (error) {
+    console.error("Erro Galeria:", error);
     return [];
   }
 }

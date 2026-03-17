@@ -10,9 +10,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const projects = await getProjects(lang);
   const project = projects.find((p: any) => p.id.toString() === id);
 
-  if (!project) {
-    return notFound();
-  }
+  if (!project) return notFound();
 
   return (
     <div className="min-h-screen bg-black text-zinc-100 pb-20 pt-24">
@@ -30,14 +28,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             {project.imageUrl ? (
               <img src={project.imageUrl} alt={project.title} className="w-full h-auto object-cover" />
             ) : (
-              <div className="flex aspect-video items-center justify-center bg-zinc-800 text-zinc-500">No Image</div>
+              <div className="flex aspect-video items-center justify-center bg-zinc-800 text-zinc-500">Sem Imagem</div>
             )}
           </div>
 
           <div className="flex flex-col">
             <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">{project.title}</h1>
             <div className="mb-6 flex items-center gap-2 text-sm text-zinc-400">
-              <Tag size={16} /> <span>{project.status || 'Active'}</span>
+              <Tag size={16} /> <span>{project.status}</span>
             </div>
             <p className="mb-8 text-lg leading-relaxed text-zinc-400">{project.description}</p>
 
