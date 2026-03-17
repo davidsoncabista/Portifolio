@@ -8,6 +8,8 @@ import { notFound } from "next/navigation";
 export default async function ProjectDetailPage({ params }: { params: Promise<{ lang: string, id: string }> }) {
   const { lang, id } = await params; 
   const projects = await getProjects(lang);
+  
+  // Como o ID pode ser string ou number, comparamos convertendo ambos para string
   const project = projects.find((p: any) => p.id.toString() === id);
 
   if (!project) return notFound();
@@ -35,7 +37,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="flex flex-col">
             <h1 className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl">{project.title}</h1>
             <div className="mb-6 flex items-center gap-2 text-sm text-zinc-400">
-              <Tag size={16} /> <span>{project.status}</span>
+              <Tag size={16} /> <span>{project.status || 'Ativo'}</span>
             </div>
             <p className="mb-8 text-lg leading-relaxed text-zinc-400">{project.description}</p>
 
