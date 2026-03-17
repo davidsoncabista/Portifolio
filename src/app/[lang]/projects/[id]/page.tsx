@@ -1,30 +1,35 @@
 import { getProjects } from '@/lib/data';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink, ArrowLeft, Calendar, Tag } from "lucide-react";
+import { Github, ExternalLink, ArrowLeft, Tag } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ lang: string, id: string }> }) {
-  // Aque aguardamos os parâmetros chegarem
+  // 1. Aguardamos os parâmetros (Obrigatório nas versões novas do Next.js)
   const { lang, id } = await params; 
   
+  // 2. Buscamos os projetos
   const projects = await getProjects(lang);
+  
+  // 3. Filtramos o projeto pelo ID
   const project = projects.find((p: any) => p.id.toString() === id);
 
-  if (!project) return notFound();
+  // 4. Se não encontrar, mostra 404
+  if (!project) {
+    return notFound();
   }
 
   return (
     <div className="min-h-screen bg-black text-zinc-100 pb-20">
-      {/* Header / Navegação de Volta */}
       <div className="container mx-auto px-4 pt-12">
+        {/* Usamos a variável 'lang' extraída do await params */}
         <Link 
-          href={`/${params.lang}/#projects`} 
+          href={`/${lang}/#projects`} 
           className="group mb-8 inline-flex items-center gap-2 text-zinc-400 transition-colors hover:text-white"
         >
           <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
-          {params.lang === 'pt' ? 'Voltar para projetos' : 'Back to projects'}
+          {lang === 'pt' ? 'Voltar para projetos' : 'Back to projects'}
         </Link>
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
@@ -63,7 +68,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
             <div className="mb-10">
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500">
-                {params.lang === 'pt' ? 'Tecnologias Utilizadas' : 'Technologies Used'}
+                {lang === 'pt' ? 'Tecnologias Utilizadas' : 'Technologies Used'}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {project.technologies?.map((tech: string) => (
