@@ -9,6 +9,7 @@ const nextConfig = {
     unoptimized: true, // Crucial para não travar o HP Gen8
     remotePatterns: [
       { protocol: 'https', hostname: 'placehold.co', pathname: '/**' },
+      { protocol: 'https', hostname: 's3.davidson.dev.br', port: '', pathname: '/portfolio-image/**' },      
       { protocol: 'https', hostname: 'images.unsplash.com', pathname: '/**' },
       { protocol: 'https', hostname: 'picsum.photos', pathname: '/**' },
       { protocol: 'https', hostname: 'cdn.simpleicons.org', pathname: '/**' },
