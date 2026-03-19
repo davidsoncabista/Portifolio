@@ -44,7 +44,7 @@ export async function getProjects(lang: string = 'pt'): Promise<Project[]> {
 // 2. Função de busca de Skills
 export async function getSkills(lang: string = 'pt'): Promise<any[]> {
     try {
-        const response = await fetch(`${API_BASE_URL}/skills`, { cache: 'no-store' });
+        const response = await fetch(`${API_BASE_URL}/admin/api/skills`, { cache: 'no-store' });
         if (!response.ok) return [];
         const data = await response.json();
         return Array.isArray(data) ? data : [];
