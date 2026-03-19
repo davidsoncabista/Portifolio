@@ -1,7 +1,7 @@
 import { Github, Code2, ServerCog, Linkedin, Instagram, Youtube, TowerControl } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
-const API_BASE_URL = 'http://192.168.0.71:8080';
+const API_BASE_URL = 'http://192.168.0.70g:8080';
 
 export type Project = {
   id: number;
