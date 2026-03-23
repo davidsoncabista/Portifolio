@@ -1,24 +1,18 @@
-import { getArticles } from '@/lib/data'; // Busca a nova função de fetch
+import { getArticles } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BookText } from 'lucide-react';
 import Link from 'next/link';
-import { format, parseISO, isValid } from 'date-fns';
-import { enUS, ptBR } from 'date-fns/locale';
 
-// O componente agora é async para aguardar a resposta da API Java
 export async function ArticlesSection({ lang }: { lang: string }) {
-  // Busca os artigos dinamicamente do seu backend Java (IP 192.168.0.70)
   const articles = await getArticles(lang); 
   
-  const locale = lang === 'pt' ? ptBR : enUS;
   const title = lang === 'pt' ? 'Artigos em Destaque' : 'Featured Articles';
   const description = lang === 'pt'
-    ? 'Aqui estão alguns artigos e pensamentos que compartilhei no LinkedIn.'
-    : "Here are some articles and thoughts I've shared on LinkedIn.";
-  const readMoreText = lang === 'pt' ? 'Ler no LinkedIn' : 'Read on LinkedIn';
+    ? 'Aqui estão alguns artigos e pensamentos que compartilhei.'
+    : "Here are some articles and thoughts I've shared.";
+  const readMoreText = lang === 'pt' ? 'Ler Artigo' : 'Read Article';
 
-  // Caso não existam artigos retornados pela API, a seção não é renderizada
   if (!articles || articles.length === 0) return null;
 
   return (
@@ -35,44 +29,26 @@ export async function ArticlesSection({ lang }: { lang: string }) {
         <div className="mx-auto grid max-w-5xl gap-6">
           {articles.map((article, index) => (
             <Card key={index} className="transform-gpu transition-all duration-300 hover:-translate-y-1 hover:shadow-primary/10 hover:shadow-lg">
-              <div className="grid grid-cols-[auto_1fr_auto] items-start gap-4 p-6">
-                <div className="text-primary pt-1">
-                  <BookText className="h-8 w-8" />
+              <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 p-6">
+                <div className="text-primary">
+                  {/* Se tiver imagem, mostra ela. Se não, mostra o ícone padrão */}
+                  {article.imageUrl ? (
+                    <img src={article.imageUrl} alt={article.title} className="h-16 w-16 object-cover rounded" />
+                  ) : (
+                    <BookText className="h-8 w-8" />
+                  )}
                 </div>
                 <div className="flex-1">
                   <CardHeader className="p-0">
                     <CardTitle className="font-headline text-xl mb-1">{article.title}</CardTitle>
-                    <CardDescription>{article.description}</CardDescription>
+                    {/* Alterado de description para summary */}
+                    <CardDescription>{article.summary}</CardDescription> 
                   </CardHeader>
-                  <CardContent className="p-0 mt-4">
-                    <p className="text-sm text-muted-foreground">
-                      {/* Formata a data vinda do banco de dados Java/MariaDB com validação */}
-                      {(() => {
-                        const raw = article.publicationDate;
-                        const fallback = lang === 'pt' ? 'Data indisponível' : 'Date unavailable';
-                        if (!raw) return fallback;
-
-                        // Tenta parse ISO primeiro, depois Date constructor
-                        let d: Date;
-                        try {
-                          d = typeof raw === 'string' ? parseISO(raw) : new Date(raw as any);
-                        } catch (e) {
-                          d = new Date(raw as any);
-                        }
-
-                        if (!isValid(d)) return fallback;
-                        try {
-                          return format(d, 'PPP', { locale });
-                        } catch (e) {
-                          return fallback;
-                        }
-                      })()}
-                    </p>
-                  </CardContent>
                 </div>
-                {article.url ? (
+                {/* Alterado de url para contentUrl */}
+                {article.contentUrl ? (
                   <Button asChild variant="outline">
-                    <Link href={article.url} target="_blank" rel="noopener noreferrer">
+                    <Link href={article.contentUrl} target="_blank" rel="noopener noreferrer">
                       {readMoreText}
                     </Link>
                   </Button>
