@@ -65,7 +65,8 @@ export function ProjectCard({
         </p>
 
         <div className="mb-4 flex flex-wrap gap-2">
-          {technologies.map((tech) => (
+          {}
+          {(technologies || []).map((tech) => (
             <Badge key={tech} variant="outline" className="border-zinc-700 bg-zinc-800/50 text-[10px] text-zinc-300">
               {tech}
             </Badge>
