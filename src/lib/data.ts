@@ -27,14 +27,19 @@ export async function getProjects(lang: string = 'pt'): Promise<Project[]> {
     }
     
     const data = await response.json();
-    
-    // Log para ver no Docker do servidor .13
     console.log(`Projetos carregados do Java: ${Array.isArray(data) ? data.length : 0}`);
 
     if (!Array.isArray(data)) return [];
 
-    // Filtra para garantir que o ID existe para não quebrar o React
-    return data.filter((p: any) => p.id !== null && p.id !== undefined);
+    // Filtra e Mapeia o Idioma
+    return data
+        .filter((p: any) => p.id !== null && p.id !== undefined)
+        .map((p: any) => ({
+            ...p,
+            title: lang === 'en' && p.titleEn ? p.titleEn : p.title,
+            description: lang === 'en' && p.descriptionEn ? p.descriptionEn : p.description,
+            status: lang === 'en' && p.statusEn ? p.statusEn : p.status
+        }));
   } catch (error) {
     console.error("Erro de conexão com o Backend .70:", error);
     return [];
@@ -47,7 +52,14 @@ export async function getSkills(lang: string = 'pt'): Promise<any[]> {
         const response = await fetch(`${API_BASE_URL}/admin/api/skills`, { cache: 'no-store' });
         if (!response.ok) return [];
         const data = await response.json();
-        return Array.isArray(data) ? data : [];
+        if (!Array.isArray(data)) return [];
+        
+        // Mapeia o Idioma
+        return data.map((s: any) => ({
+            ...s,
+            name: lang === 'en' && s.nameEn ? s.nameEn : s.name,
+            category: lang === 'en' && s.categoryEn ? s.categoryEn : s.category
+        }));
     } catch (error) { 
         console.error("Erro ao carregar Skills:", error);
         return []; 
@@ -60,7 +72,14 @@ export async function getArticles(lang: string = 'pt'): Promise<any[]> {
         const response = await fetch(`${API_BASE_URL}/admin/api/articles`, { cache: 'no-store' });
         if (!response.ok) return [];
         const data = await response.json();
-        return Array.isArray(data) ? data : [];
+        if (!Array.isArray(data)) return [];
+        
+        // Mapeia o Idioma
+        return data.map((a: any) => ({
+            ...a,
+            title: lang === 'en' && a.titleEn ? a.titleEn : a.title,
+            summary: lang === 'en' && a.summaryEn ? a.summaryEn : a.summary
+        }));
     } catch (error) { 
         return []; 
     }
