@@ -12,8 +12,8 @@ export function HeroSection() {
 
   const title = lang === 'pt' ? "Olá, eu sou Davidson Conceição" : "Hi, I'm Davidson Conceição";
   const description = lang === 'pt' 
-    ? "Troubleshooting de Infraestrutura e Desenvolvedor Full-Stack. Eu construo soluções robustas, escaláveis e eficientes que dão vida a ideias."
-    : "Infrastructure Troubleshooting and Full-Stack Developer. I build robust, scalable, and efficient solutions that bring ideas to life.";
+    ? "Arquiteto de Soluções & Engenheiro de Software Sênior. Projeto e construo plataformas robustas de ponta a ponta. Transformo desafios de negócios em soluções escaláveis, desde o Desenho da Arquitetura(Solution Design) até a entrega final da aplicação."
+    : "Solutions Architect & Senior Software Engineer. I design and build robust end-to-end platforms. I transform business challenges into scalable solutions, from Solution Design to final application delivery.";
   const viewWork = lang === 'pt' ? "Ver meu trabalho" : "View My Work";
 
   return (
