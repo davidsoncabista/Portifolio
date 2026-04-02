@@ -1,16 +1,12 @@
 'use client';
 
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { PlayCircle } from "lucide-react";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ContactSection } from './ContactSection';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export function HeroSection() {
-  const videoPlaceholder = PlaceHolderImages.find(p => p.id === 'video-intro-placeholder');
   const pathname = usePathname();
   const lang = pathname.split('/')[1] || 'pt';
 
@@ -48,19 +44,15 @@ export function HeroSection() {
 
             </div>
             <Card className="relative group overflow-hidden rounded-xl">
-              {videoPlaceholder && (
-                <Image
-                  alt={videoPlaceholder.description}
-                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full transition-transform duration-300 group-hover:scale-105"
-                  src={videoPlaceholder.imageUrl}
-                  width={1280}
-                  height={720}
-                  data-ai-hint={videoPlaceholder.imageHint}
-                  priority
+              <div className="w-full aspect-video overflow-hidden rounded-xl">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/70ERxt8lftA"
+                  title={lang === 'pt' ? 'Vídeo de introdução' : 'Intro video'}
+                  frameBorder={0}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
                 />
-              )}
-              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                <PlayCircle className="w-20 h-20 text-white/70 group-hover:text-primary group-hover:scale-110 transition-all duration-300" />
               </div>
             </Card>
           </div>
