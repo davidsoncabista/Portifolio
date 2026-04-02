@@ -97,6 +97,23 @@ export async function getGalleryImages(): Promise<string[]> {
     }
 }
 
+export async function getProfile(lang: string = 'pt') {
+  try {
+    const response = await fetch(`${API_BASE_URL}/admin/api/profile`, { cache: 'no-store' });
+    if (!response.ok) return null;
+    const data = await response.json();
+    
+    return {
+      ...data,
+      title: lang === 'en' && data.titleEn ? data.titleEn : data.title,
+      summary: lang === 'en' && data.summaryEn ? data.summaryEn : data.summary
+    };
+  } catch (error) {
+    console.error("Erro ao carregar Perfil:", error);
+    return null;
+  }
+}
+
 // 5. Links Sociais
 export const socialLinks = [
     { name: 'GitHub', icon: Github, url: 'https://github.com/davidsoncabista/Portifolio' },
