@@ -1,3 +1,4 @@
+[![Deploy (self-hosted)](https://github.com/davidsoncabista/Portifolio/actions/workflows/deploy-self-hosted.yml/badge.svg)](https://github.com/davidsoncabista/Portifolio/actions/workflows/deploy-self-hosted.yml)
 # Davidson Conceição - Personal Portfolio
 
 This repository contains the source code for my personal portfolio website, built to showcase my skills and projects as an Infrastructure Solutions Architect and Full-Stack Developer.
