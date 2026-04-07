@@ -7,18 +7,24 @@ import { PlayCircle } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ContactSection } from './ContactSection';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
-export function HeroSection() {
+// Adicionamos as propriedades que o componente vai receber do page.tsx
+export function HeroSection({ profile, lang }: { profile?: any, lang: string }) {
   const videoPlaceholder = PlaceHolderImages.find(p => p.id === 'video-intro-placeholder');
-  const pathname = usePathname();
-  const lang = pathname.split('/')[1] || 'pt';
 
-  const title = lang === 'pt' ? "Olá, eu sou Davidson Conceição" : "Hi, I'm Davidson Conceição";
-  const description = lang === 'pt' 
-    ? "Troubleshooting de Infraestrutura e Desenvolvedor Full-Stack. Eu construo soluções robustas, escaláveis e eficientes que dão vida a ideias."
-    : "Infrastructure Troubleshooting and Full-Stack Developer. I build robust, scalable, and efficient solutions that bring ideas to life.";
+  // Saudação consoante o idioma
+  const greeting = lang === 'pt' ? "Olá, eu sou" : "Hi, I'm";
+  const name = profile?.name || "Davidson Conceição";
   const viewWork = lang === 'pt' ? "Ver meu trabalho" : "View My Work";
+
+  // Usa os dados da base de dados (se existirem) ou os textos padrão (se falhar)
+  const displayTitle = profile?.title || (lang === 'pt' 
+    ? "Troubleshooting de Infraestrutura e Desenvolvedor Full-Stack." 
+    : "Infrastructure Troubleshooting and Full-Stack Developer.");
+    
+  const displaySummary = profile?.summary || (lang === 'pt' 
+    ? "Eu construo soluções robustas, escaláveis e eficientes que dão vida a ideias."
+    : "I build robust, scalable, and efficient solutions that bring ideas to life.");
 
   return (
     <>
@@ -28,21 +34,23 @@ export function HeroSection() {
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-4">
                 <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-                  {title}
+                  {greeting} {name}
                 </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  {description}
+                <p className="max-w-[600px] text-muted-foreground md:text-xl font-medium">
+                  {displayTitle}
+                </p>
+                <p className="max-w-[600px] text-muted-foreground md:text-lg">
+                  {displaySummary}
                 </p>
               </div>
               
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
+              <div className="flex flex-col gap-2 min-[400px]:flex-row mt-4">
                 <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
                   <Link href={`/${lang}/projects`}>
                     {viewWork}
                   </Link>
                 </Button>
                 
-                {/* O Modal (ContactSection) substitui o antigo botão de mailto agora e via telegran :? */}
                 <ContactSection lang={lang} />
               </div>
 
